@@ -23,6 +23,7 @@ pub struct Iterator<T: StructDecodable> {
     pub(crate) chunk: VecDeque<Tuple>,
     pub(crate) force_first_fetch: bool,
     pub total_size: i64,
+    pub schema: Option<super::table::TableSchema>,
     pub(crate) _marker: PhantomData<T>,
 }
 
@@ -41,6 +42,9 @@ impl<T: StructDecodable> Iterator<T> {
                 .client
                 .get_query_results(self.project_id.as_str(), self.job_id.as_str(), &self.request)
                 .await?;
+            if response.schema.is_some() {
+                self.schema = response.schema;
+            }
             if response.rows.is_none() {
                 return Ok(None);
             }

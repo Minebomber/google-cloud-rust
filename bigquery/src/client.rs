@@ -571,6 +571,7 @@ impl Client {
             client: self.job_client.clone(),
             project_id: result.job_reference.project_id,
             job_id: result.job_reference.job_id,
+            schema: result.schema,
             request: GetQueryResultsRequest {
                 start_index: 0,
                 page_token,

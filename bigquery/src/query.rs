@@ -55,6 +55,13 @@ impl<T: http::query::value::StructDecodable + storage::value::StructDecodable> I
             QueryResult::Http(ref mut v) => v.next().await?,
         })
     }
+
+    pub fn schema(&self) -> Option<&http::table::TableSchema> {
+        match self.inner {
+            QueryResult::Http(ref v) => v.schema.as_ref(),
+            _ => None,
+        }
+    }
 }
 
 pub mod row {
