@@ -1,27 +1,44 @@
 use std::ops::Deref;
 use std::ops::DerefMut;
 use std::sync::atomic::{AtomicI64, Ordering};
+use std::time::Duration;
 
 use prost_types::Struct;
 
+use crate::session::ManagedSession;
+use crate::statement::Statement;
+use crate::transaction::{CallOptions, QueryOptions, Transaction};
+use crate::value::Timestamp;
 use google_cloud_gax::grpc::{Code, Status};
 use google_cloud_gax::retry::{RetrySetting, TryAs};
 use google_cloud_googleapis::spanner::v1::commit_request::Transaction::TransactionId;
+use google_cloud_googleapis::spanner::v1::transaction_options::IsolationLevel;
 use google_cloud_googleapis::spanner::v1::{
     commit_request, execute_batch_dml_request, result_set_stats, transaction_options, transaction_selector,
     BeginTransactionRequest, CommitRequest, CommitResponse, ExecuteBatchDmlRequest, ExecuteSqlRequest, Mutation,
     ResultSetStats, RollbackRequest, TransactionOptions, TransactionSelector,
 };
 
-use crate::session::ManagedSession;
-use crate::statement::Statement;
-use crate::transaction::{CallOptions, QueryOptions, Transaction};
-use crate::value::Timestamp;
-
 #[derive(Clone, Default)]
 pub struct CommitOptions {
     pub return_commit_stats: bool,
     pub call_options: CallOptions,
+    pub max_commit_delay: Option<Duration>,
+}
+
+#[derive(Clone)]
+pub struct CommitResult {
+    pub timestamp: Option<Timestamp>,
+    pub mutation_count: Option<u64>,
+}
+
+impl From<CommitResponse> for CommitResult {
+    fn from(value: CommitResponse) -> Self {
+        Self {
+            timestamp: value.commit_timestamp.map(|v| v.into()),
+            mutation_count: value.commit_stats.map(|s| s.mutation_count as u64),
+        }
+    }
 }
 
 /// ReadWriteTransaction provides a locking read-write transaction.
@@ -133,8 +150,10 @@ impl ReadWriteTransaction {
             options: Some(TransactionOptions {
                 exclude_txn_from_change_streams: false,
                 mode: Some(mode),
+                isolation_level: IsolationLevel::Unspecified as i32,
             }),
             request_options: Transaction::create_request_options(options.priority),
+            mutation_key: None,
         };
         let result = session.spanner_client.begin_transaction(request, options.retry).await;
         let response = match session.invalidate_if_needed(result).await {
@@ -180,6 +199,7 @@ impl ReadWriteTransaction {
             query_options: options.optimizer_options,
             request_options: Transaction::create_request_options(options.call_options.priority),
             directed_read_options: None,
+            last_statement: false,
         };
 
         let session = self.as_mut_session();
@@ -213,6 +233,7 @@ impl ReadWriteTransaction {
                     param_types: x.param_types,
                 })
                 .collect(),
+            last_statements: false,
         };
 
         let session = self.as_mut_session();
@@ -233,7 +254,7 @@ impl ReadWriteTransaction {
         &mut self,
         result: Result<S, E>,
         options: Option<CommitOptions>,
-    ) -> Result<(Option<Timestamp>, S), E>
+    ) -> Result<(CommitResult, S), E>
     where
         E: TryAs<Status> + From<Status>,
     {
@@ -241,7 +262,7 @@ impl ReadWriteTransaction {
         match result {
             Ok(success) => {
                 let cr = self.commit(opt).await?;
-                Ok((cr.commit_timestamp.map(|e| e.into()), success))
+                Ok((cr.into(), success))
             }
             Err(err) => {
                 if let Some(status) = err.try_as() {
@@ -260,7 +281,7 @@ impl ReadWriteTransaction {
         &mut self,
         result: Result<T, E>,
         options: Option<CommitOptions>,
-    ) -> Result<(Option<Timestamp>, T), (E, Option<ManagedSession>)>
+    ) -> Result<(CommitResult, T), (E, Option<ManagedSession>)>
     where
         E: TryAs<Status> + From<Status>,
     {
@@ -268,7 +289,7 @@ impl ReadWriteTransaction {
 
         match result {
             Ok(s) => match self.commit(opt).await {
-                Ok(c) => Ok((c.commit_timestamp.map(|ts| ts.into()), s)),
+                Ok(c) => Ok((c.into(), s)),
                 // Retry the transaction using the same session on ABORT error.
                 // Cloud Spanner will create the new transaction with the previous
                 // one's wound-wait priority.
@@ -331,7 +352,8 @@ pub(crate) async fn commit(
         transaction: Some(tx),
         request_options: Transaction::create_request_options(commit_options.call_options.priority),
         return_commit_stats: commit_options.return_commit_stats,
-        max_commit_delay: None,
+        max_commit_delay: commit_options.max_commit_delay.map(|d| d.try_into().unwrap()),
+        precommit_token: None,
     };
     let result = session
         .spanner_client

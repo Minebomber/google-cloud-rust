@@ -66,7 +66,7 @@ pub struct Bucket {
     /// bucket are stored and determines the SLA and the cost of storage.
     /// If this value is not specified when the bucket is created, it will default
     /// to `STANDARD`. For more information, see
-    /// <https://developers.google.com/storage/docs/storage-classes.>
+    /// <https://developers.google.com/storage/docs/storage-classes>.
     pub storage_class: String,
     /// HTTP 1.1 \[<https://tools.ietf.org/html/rfc7232#section-2.3"\]Entity> tag]
     /// for the bucket.
@@ -141,8 +141,8 @@ pub struct Billing {
 }
 /// Cross-Origin Response sharing (CORS) properties for a bucket.
 /// For more on GCS and CORS, see
-/// <https://cloud.google.com/storage/docs/cross-origin.>
-/// For more on CORS in general, see <https://tools.ietf.org/html/rfc6454.>
+/// <https://cloud.google.com/storage/docs/cross-origin>.
+/// For more on CORS in general, see <https://tools.ietf.org/html/rfc6454>.
 #[derive(Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct Cors {
@@ -211,7 +211,7 @@ pub mod iam_configuration {
     }
 }
 /// Lifecycle properties of a bucket.
-/// For more information, see <https://cloud.google.com/storage/docs/lifecycle.>
+/// For more information, see <https://cloud.google.com/storage/docs/lifecycle>.
 #[derive(Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct Lifecycle {
@@ -302,7 +302,7 @@ pub struct RetentionPolicy {
 }
 /// Properties of a bucket related to versioning.
 /// For more on GCS versioning, see
-/// <https://cloud.google.com/storage/docs/object-versioning.>
+/// <https://cloud.google.com/storage/docs/object-versioning>.
 #[derive(Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct Versioning {
@@ -311,7 +311,7 @@ pub struct Versioning {
 }
 /// Properties of a bucket related to accessing the contents as a static
 /// website. For more on hosting a static website via GCS, see
-/// <https://cloud.google.com/storage/docs/hosting-static-website.>
+/// <https://cloud.google.com/storage/docs/hosting-static-website>.
 #[derive(Clone, PartialEq, Eq, serde::Deserialize, serde::Serialize, Debug)]
 #[serde(rename_all = "camelCase")]
 pub struct Website {
@@ -408,46 +408,25 @@ pub struct Binding {
     /// Specifies the principals requesting access for a Cloud Platform resource.
     /// `members` can have the following values:
     ///
-    /// * `allUsers`: A special identifier that represents anyone who is
-    ///    on the internet; with or without a Google account.
+    /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account.
     ///
-    /// * `allAuthenticatedUsers`: A special identifier that represents anyone
-    ///    who is authenticated with a Google account or a service account.
+    /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account.
     ///
-    /// * `user:{emailid}`: An email address that represents a specific Google
-    ///    account. For example, `alice@example.com` .
+    /// * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` .
     ///
     ///
-    /// * `serviceAccount:{emailid}`: An email address that represents a service
-    ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
+    /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`.
     ///
-    /// * `group:{emailid}`: An email address that represents a Google group.
-    ///    For example, `admins@example.com`.
+    /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
     ///
-    /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
-    ///    identifier) representing a user that has been recently deleted. For
-    ///    example, `alice@example.com?uid=123456789012345678901`. If the user is
-    ///    recovered, this value reverts to `user:{emailid}` and the recovered user
-    ///    retains the role in the binding.
+    /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding.
     ///
-    /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
-    ///    unique identifier) representing a service account that has been recently
-    ///    deleted. For example,
-    ///    `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
-    ///    If the service account is undeleted, this value reverts to
-    ///    `serviceAccount:{emailid}` and the undeleted service account retains the
-    ///    role in the binding.
+    /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding.
     ///
-    /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
-    ///    identifier) representing a Google group that has been recently
-    ///    deleted. For example, `admins@example.com?uid=123456789012345678901`. If
-    ///    the group is recovered, this value reverts to `group:{emailid}` and the
-    ///    recovered group retains the role in the binding.
+    /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
     ///
     ///
-    /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
-    ///    users of that domain. For example, `google.com` or `example.com`.
-    ///
+    /// * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
     ///
     pub members: Vec<String>,
     /// The condition that is associated with this binding.

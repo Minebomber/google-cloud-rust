@@ -1,6 +1,6 @@
 [package]
-name = "google-cloud-googleapis"
-version = "0.16.0"
+name = "gcloud-googleapis"
+version = "1.2.0"
 authors = ["yoshidan <naohiro.y@gmail.com>"]
 edition = "2021"
 repository = "https://github.com/yoshidan/google-cloud-rust/tree/main/googleapis"
@@ -9,15 +9,16 @@ license = "MIT"
 readme = "README.md"
 description = "Google Cloud Platform rust client."
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+doctest = false
 
 [dependencies]
-tonic = { version = "0.12", default-features = false, features = ["channel", "prost", "codegen", "gzip"] }
+tonic = { version = "0.13", default-features = false, features = ["channel", "prost", "codegen", "gzip"] }
 prost = "0.13"
 prost-types = "0.13"
 
 [build-dependencies]
-tonic-build = { version = "0.12", optional = true }
+tonic-build = { version = "0.13", optional = true }
 prost-build = { version = "0.13", optional = true }
 
 [features]

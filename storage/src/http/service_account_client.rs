@@ -1,8 +1,8 @@
+use reqwest::Response;
 use std::sync::Arc;
+use token_source::TokenSource;
 
-use google_cloud_token::TokenSource;
-
-use crate::http::{check_response_status, Error};
+use crate::http::Error;
 
 #[derive(Clone)]
 pub struct ServiceAccountClient {
@@ -42,8 +42,20 @@ impl ServiceAccountClient {
             None => request,
         };
         let response = request.send().await?;
-        let response = check_response_status(response).await?;
+        let response = ServiceAccountClient::check_response_status(response).await?;
         Ok(response.json::<SignBlobResponse>().await?.signed_blob)
+    }
+
+    /// Checks whether an HTTP response is successful and returns it, or returns an error.
+    async fn check_response_status(response: Response) -> Result<Response, Error> {
+        // Check the status code, returning the response if it is not an error.
+        match response.error_for_status_ref() {
+            Ok(_) => Ok(response),
+            Err(error) => match response.text().await {
+                Ok(raw) => Err(Error::RawResponse(error, raw)),
+                Err(_) => Err(Error::HttpClient(error)),
+            },
+        }
     }
 }
 
@@ -68,7 +80,7 @@ mod test {
 
     use google_cloud_auth::project::Config;
     use google_cloud_auth::token::DefaultTokenSourceProvider;
-    use google_cloud_token::TokenSourceProvider;
+    use token_source::TokenSourceProvider;
 
     use crate::http::service_account_client::ServiceAccountClient;
 

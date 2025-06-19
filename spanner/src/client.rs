@@ -9,7 +9,7 @@ use google_cloud_gax::conn::{ConnectionOptions, Environment};
 use google_cloud_gax::grpc::{Code, Status};
 use google_cloud_gax::retry::{invoke_fn, TryAs};
 use google_cloud_googleapis::spanner::v1::{commit_request, transaction_options, Mutation, TransactionOptions};
-use google_cloud_token::NopeTokenSourceProvider;
+use token_source::NoopTokenSourceProvider;
 
 use crate::apiv1::conn_pool::{ConnectionManager, SPANNER};
 use crate::retry::TransactionRetrySetting;
@@ -17,8 +17,8 @@ use crate::session::{ManagedSession, SessionConfig, SessionError, SessionManager
 use crate::statement::Statement;
 use crate::transaction::{CallOptions, QueryOptions};
 use crate::transaction_ro::{BatchReadOnlyTransaction, ReadOnlyTransaction};
-use crate::transaction_rw::{commit, CommitOptions, ReadWriteTransaction};
-use crate::value::{Timestamp, TimestampBound};
+use crate::transaction_rw::{commit, CommitOptions, CommitResult, ReadWriteTransaction};
+use crate::value::TimestampBound;
 
 #[derive(Clone, Default)]
 pub struct PartitionedUpdateOption {
@@ -86,7 +86,7 @@ impl Default for ClientConfig {
             endpoint: SPANNER.to_string(),
             environment: match var("SPANNER_EMULATOR_HOST").ok() {
                 Some(v) => Environment::Emulator(v),
-                None => Environment::GoogleCloud(Box::new(NopeTokenSourceProvider {})),
+                None => Environment::GoogleCloud(Box::new(NoopTokenSourceProvider {})),
             },
         };
         config.session_config.min_opened = config.channel_config.num_channels * 4;
@@ -97,6 +97,7 @@ impl Default for ClientConfig {
 
 #[cfg(feature = "auth")]
 pub use google_cloud_auth;
+use google_cloud_googleapis::spanner::v1::transaction_options::IsolationLevel;
 
 #[cfg(feature = "auth")]
 impl ClientConfig {
@@ -356,7 +357,7 @@ impl Client {
     /// apply's default replay protection may require an additional RPC.  So this
     /// method may be appropriate for latency sensitive and/or high throughput blind
     /// writing.
-    pub async fn apply_at_least_once(&self, ms: Vec<Mutation>) -> Result<Option<Timestamp>, Error> {
+    pub async fn apply_at_least_once(&self, ms: Vec<Mutation>) -> Result<Option<CommitResult>, Error> {
         self.apply_at_least_once_with_option(ms, CommitOptions::default()).await
     }
 
@@ -373,7 +374,7 @@ impl Client {
         &self,
         ms: Vec<Mutation>,
         options: CommitOptions,
-    ) -> Result<Option<Timestamp>, Error> {
+    ) -> Result<Option<CommitResult>, Error> {
         let ro = TransactionRetrySetting::default();
         let mut session = self.get_session().await?;
 
@@ -383,9 +384,10 @@ impl Client {
                 let tx = commit_request::Transaction::SingleUseTransaction(TransactionOptions {
                     exclude_txn_from_change_streams: false,
                     mode: Some(transaction_options::Mode::ReadWrite(transaction_options::ReadWrite::default())),
+                    isolation_level: IsolationLevel::Unspecified as i32,
                 });
                 match commit(session, ms.clone(), tx, options.clone()).await {
-                    Ok(s) => Ok(s.commit_timestamp.map(|s| s.into())),
+                    Ok(s) => Ok(Some(s.into())),
                     Err(e) => Err((Error::GRPC(e), session)),
                 }
             },
@@ -410,7 +412,7 @@ impl Client {
     ///     Ok(())
     /// }
     /// ```
-    pub async fn apply(&self, ms: Vec<Mutation>) -> Result<Option<Timestamp>, Error> {
+    pub async fn apply(&self, ms: Vec<Mutation>) -> Result<CommitResult, Error> {
         self.apply_with_option(ms, ReadWriteTransactionOption::default()).await
     }
 
@@ -419,8 +421,8 @@ impl Client {
         &self,
         ms: Vec<Mutation>,
         options: ReadWriteTransactionOption,
-    ) -> Result<Option<Timestamp>, Error> {
-        let result: Result<(Option<Timestamp>, ()), Error> = self
+    ) -> Result<CommitResult, Error> {
+        let result: Result<(CommitResult, ()), Error> = self
             .read_write_transaction_sync_with_option(
                 |tx| {
                     tx.buffer_write(ms.to_vec());
@@ -481,7 +483,7 @@ impl Client {
     ///         })
     ///     }).await
     /// }
-    pub async fn read_write_transaction<'a, T, E, F>(&self, f: F) -> Result<(Option<Timestamp>, T), E>
+    pub async fn read_write_transaction<'a, T, E, F>(&self, f: F) -> Result<(CommitResult, T), E>
     where
         E: TryAs<Status> + From<SessionError> + From<Status>,
         F: for<'tx> Fn(&'tx mut ReadWriteTransaction) -> Pin<Box<dyn Future<Output = Result<T, E>> + Send + 'tx>>,
@@ -512,7 +514,7 @@ impl Client {
         &'a self,
         f: F,
         options: ReadWriteTransactionOption,
-    ) -> Result<(Option<Timestamp>, T), E>
+    ) -> Result<(CommitResult, T), E>
     where
         E: TryAs<Status> + From<SessionError> + From<Status>,
         F: for<'tx> Fn(&'tx mut ReadWriteTransaction) -> Pin<Box<dyn Future<Output = Result<T, E>> + Send + 'tx>>,
@@ -591,7 +593,7 @@ impl Client {
         &self,
         f: impl Fn(&mut ReadWriteTransaction) -> Result<T, E>,
         options: ReadWriteTransactionOption,
-    ) -> Result<(Option<Timestamp>, T), E>
+    ) -> Result<(CommitResult, T), E>
     where
         E: TryAs<Status> + From<SessionError> + From<Status>,
     {

@@ -5,7 +5,6 @@
 /// * imageSizeBytes
 /// * mediaType
 /// * buildTime
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DockerImage {
     /// Required. registry_location, project_id, repository_name and image id forms
@@ -54,14 +53,13 @@ pub struct DockerImage {
     pub update_time: ::core::option::Option<::prost_types::Timestamp>,
 }
 /// The request to list docker images.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListDockerImagesRequest {
     /// Required. The name of the parent resource whose docker images will be
     /// listed.
     #[prost(string, tag = "1")]
     pub parent: ::prost::alloc::string::String,
-    /// The maximum number of artifacts to return.
+    /// The maximum number of artifacts to return. Maximum page size is 1,000.
     #[prost(int32, tag = "2")]
     pub page_size: i32,
     /// The next_page_token value returned from a previous list request, if any.
@@ -72,7 +70,6 @@ pub struct ListDockerImagesRequest {
     pub order_by: ::prost::alloc::string::String,
 }
 /// The response from listing docker images.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListDockerImagesResponse {
     /// The docker images returned.
@@ -84,7 +81,6 @@ pub struct ListDockerImagesResponse {
     pub next_page_token: ::prost::alloc::string::String,
 }
 /// The request to get docker images.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetDockerImageRequest {
     /// Required. The name of the docker images.
@@ -92,7 +88,6 @@ pub struct GetDockerImageRequest {
     pub name: ::prost::alloc::string::String,
 }
 /// MavenArtifact represents a maven artifact.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MavenArtifact {
     /// Required. registry_location, project_id, repository_name and maven_artifact
@@ -129,14 +124,13 @@ pub struct MavenArtifact {
     pub update_time: ::core::option::Option<::prost_types::Timestamp>,
 }
 /// The request to list maven artifacts.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListMavenArtifactsRequest {
     /// Required. The name of the parent resource whose maven artifacts will be
     /// listed.
     #[prost(string, tag = "1")]
     pub parent: ::prost::alloc::string::String,
-    /// The maximum number of artifacts to return.
+    /// The maximum number of artifacts to return. Maximum page size is 1,000.
     #[prost(int32, tag = "2")]
     pub page_size: i32,
     /// The next_page_token value returned from a previous list request, if any.
@@ -144,7 +138,6 @@ pub struct ListMavenArtifactsRequest {
     pub page_token: ::prost::alloc::string::String,
 }
 /// The response from listing maven artifacts.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListMavenArtifactsResponse {
     /// The maven artifacts returned.
@@ -156,7 +149,6 @@ pub struct ListMavenArtifactsResponse {
     pub next_page_token: ::prost::alloc::string::String,
 }
 /// The request to get maven artifacts.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetMavenArtifactRequest {
     /// Required. The name of the maven artifact.
@@ -164,7 +156,6 @@ pub struct GetMavenArtifactRequest {
     pub name: ::prost::alloc::string::String,
 }
 /// NpmPackage represents an npm artifact.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct NpmPackage {
     /// Required. registry_location, project_id, repository_name and npm_package
@@ -193,14 +184,13 @@ pub struct NpmPackage {
     pub update_time: ::core::option::Option<::prost_types::Timestamp>,
 }
 /// The request to list npm packages.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListNpmPackagesRequest {
     /// Required. The name of the parent resource whose npm packages will be
     /// listed.
     #[prost(string, tag = "1")]
     pub parent: ::prost::alloc::string::String,
-    /// The maximum number of artifacts to return.
+    /// The maximum number of artifacts to return. Maximum page size is 1,000.
     #[prost(int32, tag = "2")]
     pub page_size: i32,
     /// The next_page_token value returned from a previous list request, if any.
@@ -208,7 +198,6 @@ pub struct ListNpmPackagesRequest {
     pub page_token: ::prost::alloc::string::String,
 }
 /// The response from listing npm packages.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListNpmPackagesResponse {
     /// The npm packages returned.
@@ -220,7 +209,6 @@ pub struct ListNpmPackagesResponse {
     pub next_page_token: ::prost::alloc::string::String,
 }
 /// The request to get npm packages.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetNpmPackageRequest {
     /// Required. The name of the npm package.
@@ -228,7 +216,6 @@ pub struct GetNpmPackageRequest {
     pub name: ::prost::alloc::string::String,
 }
 /// PythonPackage represents a python artifact.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct PythonPackage {
     /// Required. registry_location, project_id, repository_name and python_package
@@ -261,14 +248,13 @@ pub struct PythonPackage {
     pub update_time: ::core::option::Option<::prost_types::Timestamp>,
 }
 /// The request to list python packages.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListPythonPackagesRequest {
     /// Required. The name of the parent resource whose python packages will be
     /// listed.
     #[prost(string, tag = "1")]
     pub parent: ::prost::alloc::string::String,
-    /// The maximum number of artifacts to return.
+    /// The maximum number of artifacts to return. Maximum page size is 1,000.
     #[prost(int32, tag = "2")]
     pub page_size: i32,
     /// The next_page_token value returned from a previous list request, if any.
@@ -276,7 +262,6 @@ pub struct ListPythonPackagesRequest {
     pub page_token: ::prost::alloc::string::String,
 }
 /// The response from listing python packages.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListPythonPackagesResponse {
     /// The python packages returned.
@@ -288,7 +273,6 @@ pub struct ListPythonPackagesResponse {
     pub next_page_token: ::prost::alloc::string::String,
 }
 /// The request to get python packages.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetPythonPackageRequest {
     /// Required. The name of the python package.
@@ -296,7 +280,6 @@ pub struct GetPythonPackageRequest {
     pub name: ::prost::alloc::string::String,
 }
 /// A detailed representation of a Yum artifact.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct YumArtifact {
     /// Output only. The Artifact Registry resource name of the artifact.
@@ -332,9 +315,9 @@ pub mod yum_artifact {
         /// (if the ProtoBuf definition does not change) and safe for programmatic use.
         pub fn as_str_name(&self) -> &'static str {
             match self {
-                PackageType::Unspecified => "PACKAGE_TYPE_UNSPECIFIED",
-                PackageType::Binary => "BINARY",
-                PackageType::Source => "SOURCE",
+                Self::Unspecified => "PACKAGE_TYPE_UNSPECIFIED",
+                Self::Binary => "BINARY",
+                Self::Source => "SOURCE",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -349,7 +332,6 @@ pub mod yum_artifact {
     }
 }
 /// Google Cloud Storage location where the artifacts currently reside.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ImportYumArtifactsGcsSource {
     /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
@@ -360,7 +342,6 @@ pub struct ImportYumArtifactsGcsSource {
     pub use_wildcards: bool,
 }
 /// The request to import new yum artifacts.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ImportYumArtifactsRequest {
     /// The name of the parent resource where the artifacts will be imported.
@@ -373,7 +354,6 @@ pub struct ImportYumArtifactsRequest {
 /// Nested message and enum types in `ImportYumArtifactsRequest`.
 pub mod import_yum_artifacts_request {
     /// The source location of the package binaries.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Source {
         /// Google Cloud Storage location where input content is located.
@@ -382,7 +362,6 @@ pub mod import_yum_artifacts_request {
     }
 }
 /// Error information explaining why a package was not imported.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ImportYumArtifactsErrorInfo {
     /// The detailed error status.
@@ -395,7 +374,6 @@ pub struct ImportYumArtifactsErrorInfo {
 /// Nested message and enum types in `ImportYumArtifactsErrorInfo`.
 pub mod import_yum_artifacts_error_info {
     /// The source that was not imported.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Source {
         /// Google Cloud Storage location requested.
@@ -404,7 +382,6 @@ pub mod import_yum_artifacts_error_info {
     }
 }
 /// The response message from importing YUM artifacts.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ImportYumArtifactsResponse {
     /// The yum artifacts imported.
@@ -415,11 +392,9 @@ pub struct ImportYumArtifactsResponse {
     pub errors: ::prost::alloc::vec::Vec<ImportYumArtifactsErrorInfo>,
 }
 /// The operation metadata for importing artifacts.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct ImportYumArtifactsMetadata {}
 /// The Artifact Registry VPC SC config that apply to a Project.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VpcscConfig {
     /// The name of the project's VPC SC Config.
@@ -460,9 +435,9 @@ pub mod vpcsc_config {
         /// (if the ProtoBuf definition does not change) and safe for programmatic use.
         pub fn as_str_name(&self) -> &'static str {
             match self {
-                VpcscPolicy::Unspecified => "VPCSC_POLICY_UNSPECIFIED",
-                VpcscPolicy::Deny => "DENY",
-                VpcscPolicy::Allow => "ALLOW",
+                Self::Unspecified => "VPCSC_POLICY_UNSPECIFIED",
+                Self::Deny => "DENY",
+                Self::Allow => "ALLOW",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -477,7 +452,6 @@ pub mod vpcsc_config {
     }
 }
 /// Gets the VPC SC config for a project.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetVpcscConfigRequest {
     /// Required. The name of the VPCSCConfig resource.
@@ -485,7 +459,6 @@ pub struct GetVpcscConfigRequest {
     pub name: ::prost::alloc::string::String,
 }
 /// Sets the VPCSC config of the project.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateVpcscConfigRequest {
     /// The project config.
@@ -498,7 +471,6 @@ pub struct UpdateVpcscConfigRequest {
 /// A detailed representation of an Apt artifact. Information in the record
 /// is derived from the archive's control file.
 /// See <https://www.debian.org/doc/debian-policy/ch-controlfields.html>
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct AptArtifact {
     /// Output only. The Artifact Registry resource name of the artifact.
@@ -540,9 +512,9 @@ pub mod apt_artifact {
         /// (if the ProtoBuf definition does not change) and safe for programmatic use.
         pub fn as_str_name(&self) -> &'static str {
             match self {
-                PackageType::Unspecified => "PACKAGE_TYPE_UNSPECIFIED",
-                PackageType::Binary => "BINARY",
-                PackageType::Source => "SOURCE",
+                Self::Unspecified => "PACKAGE_TYPE_UNSPECIFIED",
+                Self::Binary => "BINARY",
+                Self::Source => "SOURCE",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -557,7 +529,6 @@ pub mod apt_artifact {
     }
 }
 /// Google Cloud Storage location where the artifacts currently reside.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ImportAptArtifactsGcsSource {
     /// Cloud Storage paths URI (e.g., gs://my_bucket//my_object).
@@ -568,7 +539,6 @@ pub struct ImportAptArtifactsGcsSource {
     pub use_wildcards: bool,
 }
 /// The request to import new apt artifacts.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ImportAptArtifactsRequest {
     /// The name of the parent resource where the artifacts will be imported.
@@ -581,7 +551,6 @@ pub struct ImportAptArtifactsRequest {
 /// Nested message and enum types in `ImportAptArtifactsRequest`.
 pub mod import_apt_artifacts_request {
     /// The source location of the package binaries.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Source {
         /// Google Cloud Storage location where input content is located.
@@ -590,7 +559,6 @@ pub mod import_apt_artifacts_request {
     }
 }
 /// Error information explaining why a package was not imported.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ImportAptArtifactsErrorInfo {
     /// The detailed error status.
@@ -603,7 +571,6 @@ pub struct ImportAptArtifactsErrorInfo {
 /// Nested message and enum types in `ImportAptArtifactsErrorInfo`.
 pub mod import_apt_artifacts_error_info {
     /// The source that was not imported.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum Source {
         /// Google Cloud Storage location requested.
@@ -612,7 +579,6 @@ pub mod import_apt_artifacts_error_info {
     }
 }
 /// The response message from importing APT artifacts.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ImportAptArtifactsResponse {
     /// The Apt artifacts imported.
@@ -623,11 +589,9 @@ pub struct ImportAptArtifactsResponse {
     pub errors: ::prost::alloc::vec::Vec<ImportAptArtifactsErrorInfo>,
 }
 /// The operation metadata for importing artifacts.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct ImportAptArtifactsMetadata {}
 /// A hash of file content.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Hash {
     /// The algorithm used to compute the hash value.
@@ -657,9 +621,9 @@ pub mod hash {
         /// (if the ProtoBuf definition does not change) and safe for programmatic use.
         pub fn as_str_name(&self) -> &'static str {
             match self {
-                HashType::Unspecified => "HASH_TYPE_UNSPECIFIED",
-                HashType::Sha256 => "SHA256",
-                HashType::Md5 => "MD5",
+                Self::Unspecified => "HASH_TYPE_UNSPECIFIED",
+                Self::Sha256 => "SHA256",
+                Self::Md5 => "MD5",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -674,11 +638,10 @@ pub mod hash {
     }
 }
 /// Files store content that is potentially associated with Packages or Versions.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct File {
     /// The name of the file, for example:
-    /// "projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt".
+    /// `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`.
     /// If the file ID part contains slashes, they are escaped.
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
@@ -701,9 +664,11 @@ pub struct File {
     /// made. Only set when the repository is remote.
     #[prost(message, optional, tag = "8")]
     pub fetch_time: ::core::option::Option<::prost_types::Timestamp>,
+    /// Optional. Client specified annotations.
+    #[prost(map = "string, string", tag = "9")]
+    pub annotations: ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
 }
 /// The request to list files.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListFilesRequest {
     /// Required. The name of the repository whose files will be listed. For
@@ -715,16 +680,54 @@ pub struct ListFilesRequest {
     ///
     ///    * `name`
     ///    * `owner`
+    ///    * `annotations`
     ///
-    ///   An example of using a filter:
+    /// Examples of using a filter:
     ///
-    ///    * `name="projects/p1/locations/us-central1/repositories/repo1/files/a/b/*"` --> Files with an
-    ///    ID starting with "a/b/".
-    ///    * `owner="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"` -->
-    ///    Files owned by the version `1.0` in package `pkg1`.
+    ///   To filter the results of your request to files with the name `my_file.txt`
+    ///   in project `my-project` in the `us-central` region, in repository
+    ///   `my-repo`, append the following filter expression to your request:
+    ///
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-file.txt"`
+    ///
+    ///   You can also use wildcards to match any number of characters before or
+    ///   after the value:
+    ///
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/my-*"`
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/*file.txt"`
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/files/*file*"`
+    ///
+    ///   To filter the results of your request to files owned by the version `1.0`
+    ///   in package `pkg1`, append the following filter expression to your request:
+    ///
+    ///    * `owner="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"`
+    ///
+    ///   To filter the results of your request to files with the annotation
+    ///   key-value pair \[`external_link`: `external_link_value`\], append the
+    ///   following filter expression to your request:
+    ///
+    ///    * `"annotations.external_link:external_link_value"`
+    ///
+    ///   To filter just for a specific annotation key `external_link`, append the
+    ///   following filter expression to your request:
+    ///
+    ///    * `"annotations.external_link"`
+    ///
+    ///   If the annotation key or value contains special characters, you can escape
+    ///   them by surrounding the value with backticks. For example, to filter the
+    ///   results of your request to files with the annotation key-value pair
+    ///   \[`external.link`:`<https://example.com/my-file`\],> append the following
+    ///   filter expression to your request:
+    ///
+    ///    * `` "annotations.`external.link`:`<https://example.com/my-file`"> ``
+    ///
+    ///   You can also filter with annotations with a wildcard to
+    ///   match any number of characters before or after the value:
+    ///
+    ///    * `` "annotations.*_link:`*example.com*`" ``
     #[prost(string, tag = "4")]
     pub filter: ::prost::alloc::string::String,
-    /// The maximum number of files to return.
+    /// The maximum number of files to return. Maximum page size is 1,000.
     #[prost(int32, tag = "2")]
     pub page_size: i32,
     /// The next_page_token value returned from a previous list request, if any.
@@ -735,7 +738,6 @@ pub struct ListFilesRequest {
     pub order_by: ::prost::alloc::string::String,
 }
 /// The response from listing files.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListFilesResponse {
     /// The files returned.
@@ -747,15 +749,32 @@ pub struct ListFilesResponse {
     pub next_page_token: ::prost::alloc::string::String,
 }
 /// The request to retrieve a file.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetFileRequest {
     /// Required. The name of the file to retrieve.
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
 }
+/// The request to delete a file.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DeleteFileRequest {
+    /// Required. The name of the file to delete.
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+}
+/// The request to update a file.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UpdateFileRequest {
+    /// Required. The File that replaces the resource on the server.
+    #[prost(message, optional, tag = "1")]
+    pub file: ::core::option::Option<File>,
+    /// Required. The update mask applies to the resource. For the `FieldMask`
+    /// definition, see
+    /// <https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask>
+    #[prost(message, optional, tag = "2")]
+    pub update_mask: ::core::option::Option<::prost_types::FieldMask>,
+}
 /// Packages are named collections of versions.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Package {
     /// The name of the package, for example:
@@ -773,9 +792,11 @@ pub struct Package {
     /// version of the package.
     #[prost(message, optional, tag = "6")]
     pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    /// Optional. Client specified annotations.
+    #[prost(map = "string, string", tag = "7")]
+    pub annotations: ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
 }
 /// The request to list packages.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListPackagesRequest {
     /// Required. The name of the parent resource whose packages will be listed.
@@ -787,9 +808,58 @@ pub struct ListPackagesRequest {
     /// The next_page_token value returned from a previous list request, if any.
     #[prost(string, tag = "3")]
     pub page_token: ::prost::alloc::string::String,
+    /// Optional. An expression for filtering the results of the request. Filter
+    /// rules are case insensitive. The fields eligible for filtering are:
+    ///
+    ///    * `name`
+    ///    * `annotations`
+    ///
+    /// Examples of using a filter:
+    ///
+    ///   To filter the results of your request to packages with the name
+    ///   `my-package` in project `my-project` in the `us-central` region, in
+    ///   repository `my-repo`, append the following filter expression to your
+    ///   request:
+    ///
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package"`
+    ///
+    ///   You can also use wildcards to match any number of characters before or
+    ///   after the value:
+    ///
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-*"`
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/*package"`
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/*pack*"`
+    ///
+    ///   To filter the results of your request to packages with the annotation
+    ///   key-value pair \[`external_link`: `external_link_value`\], append the
+    ///   following filter expression to your request":
+    ///
+    ///    * `"annotations.external_link:external_link_value"`
+    ///
+    ///   To filter the results just for a specific annotation key `external_link`,
+    ///   append the following filter expression to your request:
+    ///
+    ///    * `"annotations.external_link"`
+    ///
+    ///   If the annotation key or value contains special characters, you can escape
+    ///   them by surrounding the value with backticks. For example, to filter the
+    ///   results of your request to packages with the annotation key-value pair
+    ///   \[`external.link`:`<https://example.com/my-package`\],> append the following
+    ///   filter expression to your request:
+    ///
+    ///    * `` "annotations.`external.link`:`<https://example.com/my-package`"> ``
+    ///
+    ///   You can also filter with annotations with a wildcard to
+    ///   match any number of characters before or after the value:
+    ///
+    ///    * `` "annotations.*_link:`*example.com*`" ``
+    #[prost(string, tag = "4")]
+    pub filter: ::prost::alloc::string::String,
+    /// Optional. The field to order the results by.
+    #[prost(string, tag = "5")]
+    pub order_by: ::prost::alloc::string::String,
 }
 /// The response from listing packages.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListPackagesResponse {
     /// The packages returned.
@@ -801,7 +871,6 @@ pub struct ListPackagesResponse {
     pub next_page_token: ::prost::alloc::string::String,
 }
 /// The request to retrieve a package.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetPackageRequest {
     /// Required. The name of the package to retrieve.
@@ -809,15 +878,25 @@ pub struct GetPackageRequest {
     pub name: ::prost::alloc::string::String,
 }
 /// The request to delete a package.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeletePackageRequest {
     /// Required. The name of the package to delete.
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
 }
+/// The request to update a package.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UpdatePackageRequest {
+    /// The package that replaces the resource on the server.
+    #[prost(message, optional, tag = "1")]
+    pub package: ::core::option::Option<Package>,
+    /// The update mask applies to the resource. For the `FieldMask` definition,
+    /// see
+    /// <https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask>
+    #[prost(message, optional, tag = "2")]
+    pub update_mask: ::core::option::Option<::prost_types::FieldMask>,
+}
 /// Artifact policy configuration for the repository contents.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpstreamPolicy {
     /// The user-provided ID of the upstream policy.
@@ -834,7 +913,6 @@ pub struct UpstreamPolicy {
 /// CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy.
 /// If multiple entries are set, all must be satisfied for the condition to be
 /// satisfied.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CleanupPolicyCondition {
     /// Match versions by tag status.
@@ -878,10 +956,10 @@ pub mod cleanup_policy_condition {
         /// (if the ProtoBuf definition does not change) and safe for programmatic use.
         pub fn as_str_name(&self) -> &'static str {
             match self {
-                TagState::Unspecified => "TAG_STATE_UNSPECIFIED",
-                TagState::Tagged => "TAGGED",
-                TagState::Untagged => "UNTAGGED",
-                TagState::Any => "ANY",
+                Self::Unspecified => "TAG_STATE_UNSPECIFIED",
+                Self::Tagged => "TAGGED",
+                Self::Untagged => "UNTAGGED",
+                Self::Any => "ANY",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -898,7 +976,6 @@ pub mod cleanup_policy_condition {
 }
 /// CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy
 /// for retaining a minimum number of versions.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CleanupPolicyMostRecentVersions {
     /// List of package name prefixes that will apply this rule.
@@ -909,7 +986,6 @@ pub struct CleanupPolicyMostRecentVersions {
     pub keep_count: ::core::option::Option<i32>,
 }
 /// Artifact policy configuration for repository cleanup policies.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CleanupPolicy {
     /// The user-provided ID of the cleanup policy.
@@ -941,9 +1017,9 @@ pub mod cleanup_policy {
         /// (if the ProtoBuf definition does not change) and safe for programmatic use.
         pub fn as_str_name(&self) -> &'static str {
             match self {
-                Action::Unspecified => "ACTION_UNSPECIFIED",
-                Action::Delete => "DELETE",
-                Action::Keep => "KEEP",
+                Self::Unspecified => "ACTION_UNSPECIFIED",
+                Self::Delete => "DELETE",
+                Self::Keep => "KEEP",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -956,7 +1032,6 @@ pub mod cleanup_policy {
             }
         }
     }
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum ConditionType {
         /// Policy condition for matching versions.
@@ -969,7 +1044,6 @@ pub mod cleanup_policy {
     }
 }
 /// Virtual repository configuration.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct VirtualRepositoryConfig {
     /// Policies that configure the upstream artifacts distributed by the Virtual
@@ -978,7 +1052,6 @@ pub struct VirtualRepositoryConfig {
     pub upstream_policies: ::prost::alloc::vec::Vec<UpstreamPolicy>,
 }
 /// Remote repository configuration.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct RemoteRepositoryConfig {
     /// The description of the remote source.
@@ -987,14 +1060,17 @@ pub struct RemoteRepositoryConfig {
     /// Optional. The credentials used to access the remote repository.
     #[prost(message, optional, tag = "9")]
     pub upstream_credentials: ::core::option::Option<remote_repository_config::UpstreamCredentials>,
+    /// Input only. A create/update remote repo option to avoid making a HEAD/GET
+    /// request to validate a remote repo and any supplied upstream credentials.
+    #[prost(bool, tag = "12")]
+    pub disable_upstream_validation: bool,
     /// Settings specific to the remote repository.
-    #[prost(oneof = "remote_repository_config::RemoteSource", tags = "2, 3, 4, 5, 6, 7")]
+    #[prost(oneof = "remote_repository_config::RemoteSource", tags = "2, 3, 4, 5, 6, 7, 14")]
     pub remote_source: ::core::option::Option<remote_repository_config::RemoteSource>,
 }
 /// Nested message and enum types in `RemoteRepositoryConfig`.
 pub mod remote_repository_config {
     /// The credentials to access the remote repository.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct UpstreamCredentials {
         #[prost(oneof = "upstream_credentials::Credentials", tags = "1")]
@@ -1003,7 +1079,6 @@ pub mod remote_repository_config {
     /// Nested message and enum types in `UpstreamCredentials`.
     pub mod upstream_credentials {
         /// Username and password credentials.
-        #[allow(clippy::derive_partial_eq_without_eq)]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct UsernamePasswordCredentials {
             /// The username to access the remote repository.
@@ -1015,7 +1090,6 @@ pub mod remote_repository_config {
             #[prost(string, tag = "2")]
             pub password_secret_version: ::prost::alloc::string::String,
         }
-        #[allow(clippy::derive_partial_eq_without_eq)]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Credentials {
             /// Use username and password to access the remote repository.
@@ -1024,15 +1098,22 @@ pub mod remote_repository_config {
         }
     }
     /// Configuration for a Docker remote repository.
-    #[allow(clippy::derive_partial_eq_without_eq)]
-    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct DockerRepository {
         /// Address of the remote repository.
-        #[prost(oneof = "docker_repository::Upstream", tags = "1")]
+        #[prost(oneof = "docker_repository::Upstream", tags = "1, 3")]
         pub upstream: ::core::option::Option<docker_repository::Upstream>,
     }
     /// Nested message and enum types in `DockerRepository`.
     pub mod docker_repository {
+        /// Customer-specified publicly available remote repository.
+        #[derive(Clone, PartialEq, ::prost::Message)]
+        pub struct CustomRepository {
+            /// An http/https uri reference to the custom remote repository, for ex:
+            /// "<https://registry-1.docker.io".>
+            #[prost(string, tag = "1")]
+            pub uri: ::prost::alloc::string::String,
+        }
         /// Predefined list of publicly available Docker repositories like Docker
         /// Hub.
         #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
@@ -1050,8 +1131,8 @@ pub mod remote_repository_config {
             /// (if the ProtoBuf definition does not change) and safe for programmatic use.
             pub fn as_str_name(&self) -> &'static str {
                 match self {
-                    PublicRepository::Unspecified => "PUBLIC_REPOSITORY_UNSPECIFIED",
-                    PublicRepository::DockerHub => "DOCKER_HUB",
+                    Self::Unspecified => "PUBLIC_REPOSITORY_UNSPECIFIED",
+                    Self::DockerHub => "DOCKER_HUB",
                 }
             }
             /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1064,25 +1145,34 @@ pub mod remote_repository_config {
             }
         }
         /// Address of the remote repository.
-        #[allow(clippy::derive_partial_eq_without_eq)]
-        #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
+        #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Upstream {
             /// One of the publicly available Docker repositories supported by Artifact
             /// Registry.
             #[prost(enumeration = "PublicRepository", tag = "1")]
             PublicRepository(i32),
+            /// Customer-specified remote repository.
+            #[prost(message, tag = "3")]
+            CustomRepository(CustomRepository),
         }
     }
     /// Configuration for a Maven remote repository.
-    #[allow(clippy::derive_partial_eq_without_eq)]
-    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct MavenRepository {
         /// Address of the remote repository.
-        #[prost(oneof = "maven_repository::Upstream", tags = "1")]
+        #[prost(oneof = "maven_repository::Upstream", tags = "1, 3")]
         pub upstream: ::core::option::Option<maven_repository::Upstream>,
     }
     /// Nested message and enum types in `MavenRepository`.
     pub mod maven_repository {
+        /// Customer-specified publicly available remote repository.
+        #[derive(Clone, PartialEq, ::prost::Message)]
+        pub struct CustomRepository {
+            /// An http/https uri reference to the upstream remote repository, for ex:
+            /// "<https://my.maven.registry/".>
+            #[prost(string, tag = "1")]
+            pub uri: ::prost::alloc::string::String,
+        }
         /// Predefined list of publicly available Maven repositories like Maven
         /// Central.
         #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
@@ -1100,8 +1190,8 @@ pub mod remote_repository_config {
             /// (if the ProtoBuf definition does not change) and safe for programmatic use.
             pub fn as_str_name(&self) -> &'static str {
                 match self {
-                    PublicRepository::Unspecified => "PUBLIC_REPOSITORY_UNSPECIFIED",
-                    PublicRepository::MavenCentral => "MAVEN_CENTRAL",
+                    Self::Unspecified => "PUBLIC_REPOSITORY_UNSPECIFIED",
+                    Self::MavenCentral => "MAVEN_CENTRAL",
                 }
             }
             /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1114,25 +1204,34 @@ pub mod remote_repository_config {
             }
         }
         /// Address of the remote repository.
-        #[allow(clippy::derive_partial_eq_without_eq)]
-        #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
+        #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Upstream {
             /// One of the publicly available Maven repositories supported by Artifact
             /// Registry.
             #[prost(enumeration = "PublicRepository", tag = "1")]
             PublicRepository(i32),
+            /// Customer-specified remote repository.
+            #[prost(message, tag = "3")]
+            CustomRepository(CustomRepository),
         }
     }
     /// Configuration for a Npm remote repository.
-    #[allow(clippy::derive_partial_eq_without_eq)]
-    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct NpmRepository {
         /// Address of the remote repository
-        #[prost(oneof = "npm_repository::Upstream", tags = "1")]
+        #[prost(oneof = "npm_repository::Upstream", tags = "1, 3")]
         pub upstream: ::core::option::Option<npm_repository::Upstream>,
     }
     /// Nested message and enum types in `NpmRepository`.
     pub mod npm_repository {
+        /// Customer-specified publicly available remote repository.
+        #[derive(Clone, PartialEq, ::prost::Message)]
+        pub struct CustomRepository {
+            /// An http/https uri reference to the upstream remote repository, for ex:
+            /// "<https://my.npm.registry/".>
+            #[prost(string, tag = "1")]
+            pub uri: ::prost::alloc::string::String,
+        }
         /// Predefined list of publicly available NPM repositories like npmjs.
         #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
         #[repr(i32)]
@@ -1149,8 +1248,8 @@ pub mod remote_repository_config {
             /// (if the ProtoBuf definition does not change) and safe for programmatic use.
             pub fn as_str_name(&self) -> &'static str {
                 match self {
-                    PublicRepository::Unspecified => "PUBLIC_REPOSITORY_UNSPECIFIED",
-                    PublicRepository::Npmjs => "NPMJS",
+                    Self::Unspecified => "PUBLIC_REPOSITORY_UNSPECIFIED",
+                    Self::Npmjs => "NPMJS",
                 }
             }
             /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1163,25 +1262,34 @@ pub mod remote_repository_config {
             }
         }
         /// Address of the remote repository
-        #[allow(clippy::derive_partial_eq_without_eq)]
-        #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
+        #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Upstream {
             /// One of the publicly available Npm repositories supported by Artifact
             /// Registry.
             #[prost(enumeration = "PublicRepository", tag = "1")]
             PublicRepository(i32),
+            /// Customer-specified remote repository.
+            #[prost(message, tag = "3")]
+            CustomRepository(CustomRepository),
         }
     }
     /// Configuration for a Python remote repository.
-    #[allow(clippy::derive_partial_eq_without_eq)]
-    #[derive(Clone, Copy, PartialEq, ::prost::Message)]
+    #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct PythonRepository {
         /// Address of the remote repository.
-        #[prost(oneof = "python_repository::Upstream", tags = "1")]
+        #[prost(oneof = "python_repository::Upstream", tags = "1, 3")]
         pub upstream: ::core::option::Option<python_repository::Upstream>,
     }
     /// Nested message and enum types in `PythonRepository`.
     pub mod python_repository {
+        /// Customer-specified publicly available remote repository.
+        #[derive(Clone, PartialEq, ::prost::Message)]
+        pub struct CustomRepository {
+            /// An http/https uri reference to the upstream remote repository, for ex:
+            /// "<https://my.python.registry/".>
+            #[prost(string, tag = "1")]
+            pub uri: ::prost::alloc::string::String,
+        }
         /// Predefined list of publicly available Python repositories like PyPI.org.
         #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
         #[repr(i32)]
@@ -1198,8 +1306,8 @@ pub mod remote_repository_config {
             /// (if the ProtoBuf definition does not change) and safe for programmatic use.
             pub fn as_str_name(&self) -> &'static str {
                 match self {
-                    PublicRepository::Unspecified => "PUBLIC_REPOSITORY_UNSPECIFIED",
-                    PublicRepository::Pypi => "PYPI",
+                    Self::Unspecified => "PUBLIC_REPOSITORY_UNSPECIFIED",
+                    Self::Pypi => "PYPI",
                 }
             }
             /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1212,28 +1320,28 @@ pub mod remote_repository_config {
             }
         }
         /// Address of the remote repository.
-        #[allow(clippy::derive_partial_eq_without_eq)]
-        #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
+        #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Upstream {
             /// One of the publicly available Python repositories supported by Artifact
             /// Registry.
             #[prost(enumeration = "PublicRepository", tag = "1")]
             PublicRepository(i32),
+            /// Customer-specified remote repository.
+            #[prost(message, tag = "3")]
+            CustomRepository(CustomRepository),
         }
     }
     /// Configuration for an Apt remote repository.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct AptRepository {
         /// Address of the remote repository.
-        #[prost(oneof = "apt_repository::Upstream", tags = "1")]
+        #[prost(oneof = "apt_repository::Upstream", tags = "1, 3")]
         pub upstream: ::core::option::Option<apt_repository::Upstream>,
     }
     /// Nested message and enum types in `AptRepository`.
     pub mod apt_repository {
         /// Publicly available Apt repositories constructed from a common repository
         /// base and a custom repository path.
-        #[allow(clippy::derive_partial_eq_without_eq)]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct PublicRepository {
             /// A common public repository base for Apt.
@@ -1255,6 +1363,8 @@ pub mod remote_repository_config {
                 Debian = 1,
                 /// Ubuntu LTS/Pro.
                 Ubuntu = 2,
+                /// Archived Debian.
+                DebianSnapshot = 3,
             }
             impl RepositoryBase {
                 /// String value of the enum field names used in the ProtoBuf definition.
@@ -1263,9 +1373,10 @@ pub mod remote_repository_config {
                 /// (if the ProtoBuf definition does not change) and safe for programmatic use.
                 pub fn as_str_name(&self) -> &'static str {
                     match self {
-                        RepositoryBase::Unspecified => "REPOSITORY_BASE_UNSPECIFIED",
-                        RepositoryBase::Debian => "DEBIAN",
-                        RepositoryBase::Ubuntu => "UBUNTU",
+                        Self::Unspecified => "REPOSITORY_BASE_UNSPECIFIED",
+                        Self::Debian => "DEBIAN",
+                        Self::Ubuntu => "UBUNTU",
+                        Self::DebianSnapshot => "DEBIAN_SNAPSHOT",
                     }
                 }
                 /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1274,34 +1385,43 @@ pub mod remote_repository_config {
                         "REPOSITORY_BASE_UNSPECIFIED" => Some(Self::Unspecified),
                         "DEBIAN" => Some(Self::Debian),
                         "UBUNTU" => Some(Self::Ubuntu),
+                        "DEBIAN_SNAPSHOT" => Some(Self::DebianSnapshot),
                         _ => None,
                     }
                 }
             }
         }
+        /// Customer-specified publicly available remote repository.
+        #[derive(Clone, PartialEq, ::prost::Message)]
+        pub struct CustomRepository {
+            /// An http/https uri reference to the upstream remote repository, for ex:
+            /// "<https://my.apt.registry/".>
+            #[prost(string, tag = "1")]
+            pub uri: ::prost::alloc::string::String,
+        }
         /// Address of the remote repository.
-        #[allow(clippy::derive_partial_eq_without_eq)]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Upstream {
             /// One of the publicly available Apt repositories supported by Artifact
             /// Registry.
             #[prost(message, tag = "1")]
             PublicRepository(PublicRepository),
+            /// Customer-specified remote repository.
+            #[prost(message, tag = "3")]
+            CustomRepository(CustomRepository),
         }
     }
     /// Configuration for a Yum remote repository.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Message)]
     pub struct YumRepository {
         /// Address of the remote repository.
-        #[prost(oneof = "yum_repository::Upstream", tags = "1")]
+        #[prost(oneof = "yum_repository::Upstream", tags = "1, 3")]
         pub upstream: ::core::option::Option<yum_repository::Upstream>,
     }
     /// Nested message and enum types in `YumRepository`.
     pub mod yum_repository {
         /// Publicly available Yum repositories constructed from a common repository
         /// base and a custom repository path.
-        #[allow(clippy::derive_partial_eq_without_eq)]
         #[derive(Clone, PartialEq, ::prost::Message)]
         pub struct PublicRepository {
             /// A common public repository base for Yum.
@@ -1339,13 +1459,13 @@ pub mod remote_repository_config {
                 /// (if the ProtoBuf definition does not change) and safe for programmatic use.
                 pub fn as_str_name(&self) -> &'static str {
                     match self {
-                        RepositoryBase::Unspecified => "REPOSITORY_BASE_UNSPECIFIED",
-                        RepositoryBase::Centos => "CENTOS",
-                        RepositoryBase::CentosDebug => "CENTOS_DEBUG",
-                        RepositoryBase::CentosVault => "CENTOS_VAULT",
-                        RepositoryBase::CentosStream => "CENTOS_STREAM",
-                        RepositoryBase::Rocky => "ROCKY",
-                        RepositoryBase::Epel => "EPEL",
+                        Self::Unspecified => "REPOSITORY_BASE_UNSPECIFIED",
+                        Self::Centos => "CENTOS",
+                        Self::CentosDebug => "CENTOS_DEBUG",
+                        Self::CentosVault => "CENTOS_VAULT",
+                        Self::CentosStream => "CENTOS_STREAM",
+                        Self::Rocky => "ROCKY",
+                        Self::Epel => "EPEL",
                     }
                 }
                 /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1363,18 +1483,34 @@ pub mod remote_repository_config {
                 }
             }
         }
+        /// Customer-specified publicly available remote repository.
+        #[derive(Clone, PartialEq, ::prost::Message)]
+        pub struct CustomRepository {
+            /// An http/https uri reference to the upstream remote repository, for ex:
+            /// "<https://my.yum.registry/".>
+            #[prost(string, tag = "1")]
+            pub uri: ::prost::alloc::string::String,
+        }
         /// Address of the remote repository.
-        #[allow(clippy::derive_partial_eq_without_eq)]
         #[derive(Clone, PartialEq, ::prost::Oneof)]
         pub enum Upstream {
             /// One of the publicly available Yum repositories supported by Artifact
             /// Registry.
             #[prost(message, tag = "1")]
             PublicRepository(PublicRepository),
+            /// Customer-specified remote repository.
+            #[prost(message, tag = "3")]
+            CustomRepository(CustomRepository),
         }
     }
+    /// Common remote repository settings type.
+    #[derive(Clone, PartialEq, ::prost::Message)]
+    pub struct CommonRemoteRepository {
+        /// Required. A common public repository base for remote repository.
+        #[prost(string, tag = "1")]
+        pub uri: ::prost::alloc::string::String,
+    }
     /// Settings specific to the remote repository.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum RemoteSource {
         /// Specific settings for a Docker remote repository.
@@ -1395,14 +1531,18 @@ pub mod remote_repository_config {
         /// Specific settings for a Yum remote repository.
         #[prost(message, tag = "7")]
         YumRepository(YumRepository),
+        /// Common remote repository settings.
+        /// Used as the remote repository upstream URL.
+        #[prost(message, tag = "14")]
+        CommonRepository(CommonRemoteRepository),
     }
 }
 /// A Repository for storing artifacts with a specific format.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Repository {
     /// The name of the repository, for example:
-    /// `projects/p1/locations/us-central1/repositories/repo1`.
+    /// `projects/p1/locations/us-central1/repositories/repo1`. For each location
+    /// in a project, repository names must be unique.
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
     /// Optional. The format of packages that are stored in the repository.
@@ -1451,6 +1591,21 @@ pub struct Repository {
     /// in this repository.
     #[prost(bool, tag = "18")]
     pub cleanup_policy_dry_run: bool,
+    /// Optional. Config and state for vulnerability scanning of resources within
+    /// this Repository.
+    #[prost(message, optional, tag = "19")]
+    pub vulnerability_scanning_config: ::core::option::Option<repository::VulnerabilityScanningConfig>,
+    /// Optional. If this is true, an unspecified repo type will be treated as
+    /// error rather than defaulting to standard.
+    #[prost(bool, tag = "21")]
+    pub disallow_unspecified_mode: bool,
+    /// Output only. If set, the repository satisfies physical zone isolation.
+    #[prost(bool, tag = "22")]
+    pub satisfies_pzi: bool,
+    /// Output only. The repository endpoint, for example:
+    /// `us-docker.pkg.dev/my-proj/my-repo`.
+    #[prost(string, tag = "26")]
+    pub registry_uri: ::prost::alloc::string::String,
     /// Repository-specific configurations.
     #[prost(oneof = "repository::FormatConfig", tags = "9, 17")]
     pub format_config: ::core::option::Option<repository::FormatConfig>,
@@ -1464,7 +1619,6 @@ pub mod repository {
     /// MavenRepositoryConfig is maven related repository details.
     /// Provides additional configuration details for repositories of the maven
     /// format type.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct MavenRepositoryConfig {
         /// The repository with this flag will allow publishing
@@ -1497,9 +1651,9 @@ pub mod repository {
             /// (if the ProtoBuf definition does not change) and safe for programmatic use.
             pub fn as_str_name(&self) -> &'static str {
                 match self {
-                    VersionPolicy::Unspecified => "VERSION_POLICY_UNSPECIFIED",
-                    VersionPolicy::Release => "RELEASE",
-                    VersionPolicy::Snapshot => "SNAPSHOT",
+                    Self::Unspecified => "VERSION_POLICY_UNSPECIFIED",
+                    Self::Release => "RELEASE",
+                    Self::Snapshot => "SNAPSHOT",
                 }
             }
             /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1516,7 +1670,6 @@ pub mod repository {
     /// DockerRepositoryConfig is docker related repository details.
     /// Provides additional configuration details for repositories of the docker
     /// format type.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, Copy, PartialEq, ::prost::Message)]
     pub struct DockerRepositoryConfig {
         /// The repository which enabled this flag prevents all tags from being
@@ -1524,6 +1677,100 @@ pub mod repository {
         /// created.
         #[prost(bool, tag = "1")]
         pub immutable_tags: bool,
+    }
+    /// Config on whether to perform vulnerability scanning for resources in this
+    /// repository, as well as output fields describing current state.
+    #[derive(Clone, PartialEq, ::prost::Message)]
+    pub struct VulnerabilityScanningConfig {
+        /// Optional. Config for whether this repository has vulnerability scanning
+        /// disabled.
+        #[prost(enumeration = "vulnerability_scanning_config::EnablementConfig", tag = "1")]
+        pub enablement_config: i32,
+        /// Output only. The last time this repository config was enabled.
+        #[prost(message, optional, tag = "2")]
+        pub last_enable_time: ::core::option::Option<::prost_types::Timestamp>,
+        /// Output only. State of feature enablement, combining repository enablement
+        /// config and API enablement state.
+        #[prost(enumeration = "vulnerability_scanning_config::EnablementState", tag = "3")]
+        pub enablement_state: i32,
+        /// Output only. Reason for the repository state.
+        #[prost(string, tag = "4")]
+        pub enablement_state_reason: ::prost::alloc::string::String,
+    }
+    /// Nested message and enum types in `VulnerabilityScanningConfig`.
+    pub mod vulnerability_scanning_config {
+        /// Config for vulnerability scanning of resources in this repository.
+        #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+        #[repr(i32)]
+        pub enum EnablementConfig {
+            /// Not set. This will be treated as INHERITED.
+            Unspecified = 0,
+            /// Scanning is Enabled, but dependent on API enablement.
+            Inherited = 1,
+            /// No automatic vulnerability scanning will be performed for this
+            /// repository.
+            Disabled = 2,
+        }
+        impl EnablementConfig {
+            /// String value of the enum field names used in the ProtoBuf definition.
+            ///
+            /// The values are not transformed in any way and thus are considered stable
+            /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+            pub fn as_str_name(&self) -> &'static str {
+                match self {
+                    Self::Unspecified => "ENABLEMENT_CONFIG_UNSPECIFIED",
+                    Self::Inherited => "INHERITED",
+                    Self::Disabled => "DISABLED",
+                }
+            }
+            /// Creates an enum from field names used in the ProtoBuf definition.
+            pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+                match value {
+                    "ENABLEMENT_CONFIG_UNSPECIFIED" => Some(Self::Unspecified),
+                    "INHERITED" => Some(Self::Inherited),
+                    "DISABLED" => Some(Self::Disabled),
+                    _ => None,
+                }
+            }
+        }
+        /// Describes the state of vulnerability scanning in this repository,
+        /// including both repository enablement and API enablement.
+        #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+        #[repr(i32)]
+        pub enum EnablementState {
+            /// Enablement state is unclear.
+            Unspecified = 0,
+            /// Repository does not support vulnerability scanning.
+            ScanningUnsupported = 1,
+            /// Vulnerability scanning is disabled for this repository.
+            ScanningDisabled = 2,
+            /// Vulnerability scanning is active for this repository.
+            ScanningActive = 3,
+        }
+        impl EnablementState {
+            /// String value of the enum field names used in the ProtoBuf definition.
+            ///
+            /// The values are not transformed in any way and thus are considered stable
+            /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+            pub fn as_str_name(&self) -> &'static str {
+                match self {
+                    Self::Unspecified => "ENABLEMENT_STATE_UNSPECIFIED",
+                    Self::ScanningUnsupported => "SCANNING_UNSUPPORTED",
+                    Self::ScanningDisabled => "SCANNING_DISABLED",
+                    Self::ScanningActive => "SCANNING_ACTIVE",
+                }
+            }
+            /// Creates an enum from field names used in the ProtoBuf definition.
+            pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+                match value {
+                    "ENABLEMENT_STATE_UNSPECIFIED" => Some(Self::Unspecified),
+                    "SCANNING_UNSUPPORTED" => Some(Self::ScanningUnsupported),
+                    "SCANNING_DISABLED" => Some(Self::ScanningDisabled),
+                    "SCANNING_ACTIVE" => Some(Self::ScanningActive),
+                    _ => None,
+                }
+            }
+        }
     }
     /// A package format.
     #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
@@ -1547,6 +1794,8 @@ pub mod repository {
         Kfp = 9,
         /// Go package format.
         Go = 10,
+        /// Generic package format.
+        Generic = 11,
     }
     impl Format {
         /// String value of the enum field names used in the ProtoBuf definition.
@@ -1555,15 +1804,16 @@ pub mod repository {
         /// (if the ProtoBuf definition does not change) and safe for programmatic use.
         pub fn as_str_name(&self) -> &'static str {
             match self {
-                Format::Unspecified => "FORMAT_UNSPECIFIED",
-                Format::Docker => "DOCKER",
-                Format::Maven => "MAVEN",
-                Format::Npm => "NPM",
-                Format::Apt => "APT",
-                Format::Yum => "YUM",
-                Format::Python => "PYTHON",
-                Format::Kfp => "KFP",
-                Format::Go => "GO",
+                Self::Unspecified => "FORMAT_UNSPECIFIED",
+                Self::Docker => "DOCKER",
+                Self::Maven => "MAVEN",
+                Self::Npm => "NPM",
+                Self::Apt => "APT",
+                Self::Yum => "YUM",
+                Self::Python => "PYTHON",
+                Self::Kfp => "KFP",
+                Self::Go => "GO",
+                Self::Generic => "GENERIC",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1578,6 +1828,7 @@ pub mod repository {
                 "PYTHON" => Some(Self::Python),
                 "KFP" => Some(Self::Kfp),
                 "GO" => Some(Self::Go),
+                "GENERIC" => Some(Self::Generic),
                 _ => None,
             }
         }
@@ -1603,10 +1854,10 @@ pub mod repository {
         /// (if the ProtoBuf definition does not change) and safe for programmatic use.
         pub fn as_str_name(&self) -> &'static str {
             match self {
-                Mode::Unspecified => "MODE_UNSPECIFIED",
-                Mode::StandardRepository => "STANDARD_REPOSITORY",
-                Mode::VirtualRepository => "VIRTUAL_REPOSITORY",
-                Mode::RemoteRepository => "REMOTE_REPOSITORY",
+                Self::Unspecified => "MODE_UNSPECIFIED",
+                Self::StandardRepository => "STANDARD_REPOSITORY",
+                Self::VirtualRepository => "VIRTUAL_REPOSITORY",
+                Self::RemoteRepository => "REMOTE_REPOSITORY",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1621,7 +1872,6 @@ pub mod repository {
         }
     }
     /// Repository-specific configurations.
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, Copy, PartialEq, ::prost::Oneof)]
     pub enum FormatConfig {
         /// Maven repository config contains repository level configuration
@@ -1635,7 +1885,6 @@ pub mod repository {
     }
     /// Repository configuration specific to the Mode value being selected (Remote
     /// or Virtual)
-    #[allow(clippy::derive_partial_eq_without_eq)]
     #[derive(Clone, PartialEq, ::prost::Oneof)]
     pub enum ModeConfig {
         /// Configuration specific for a Virtual Repository.
@@ -1647,7 +1896,6 @@ pub mod repository {
     }
 }
 /// The request to list repositories.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListRepositoriesRequest {
     /// Required. The name of the parent resource whose repositories will be
@@ -1660,9 +1908,32 @@ pub struct ListRepositoriesRequest {
     /// The next_page_token value returned from a previous list request, if any.
     #[prost(string, tag = "3")]
     pub page_token: ::prost::alloc::string::String,
+    /// Optional. An expression for filtering the results of the request. Filter
+    /// rules are case insensitive. The fields eligible for filtering are:
+    ///
+    ///    * `name`
+    ///
+    ///   Examples of using a filter:
+    ///
+    /// To filter the results of your request to repositories with the name
+    /// `my-repo` in project `my-project` in the `us-central` region, append the
+    /// following filter expression to your request:
+    ///
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo"`
+    ///
+    ///   You can also use wildcards to match any number of characters before or
+    ///   after the value:
+    ///
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-*"`
+    ///    * `name="projects/my-project/locations/us-central1/repositories/*repo"`
+    ///    * `name="projects/my-project/locations/us-central1/repositories/*repo*"`
+    #[prost(string, tag = "4")]
+    pub filter: ::prost::alloc::string::String,
+    /// Optional. The field to order the results by.
+    #[prost(string, tag = "5")]
+    pub order_by: ::prost::alloc::string::String,
 }
 /// The response from listing repositories.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListRepositoriesResponse {
     /// The repositories returned.
@@ -1674,7 +1945,6 @@ pub struct ListRepositoriesResponse {
     pub next_page_token: ::prost::alloc::string::String,
 }
 /// The request to retrieve a repository.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetRepositoryRequest {
     /// Required. The name of the repository to retrieve.
@@ -1682,7 +1952,6 @@ pub struct GetRepositoryRequest {
     pub name: ::prost::alloc::string::String,
 }
 /// The request to create a new repository.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateRepositoryRequest {
     /// Required. The name of the parent resource where the repository will be
@@ -1697,7 +1966,6 @@ pub struct CreateRepositoryRequest {
     pub repository: ::core::option::Option<Repository>,
 }
 /// The request to update a repository.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateRepositoryRequest {
     /// The repository that replaces the resource on the server.
@@ -1710,15 +1978,271 @@ pub struct UpdateRepositoryRequest {
     pub update_mask: ::core::option::Option<::prost_types::FieldMask>,
 }
 /// The request to delete a repository.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeleteRepositoryRequest {
     /// Required. The name of the repository to delete.
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
 }
+/// An Attachment refers to additional metadata that can be attached to
+/// artifacts in Artifact Registry. An attachment consists of one or more files.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Attachment {
+    /// The name of the attachment. E.g.
+    /// `projects/p1/locations/us/repositories/repo/attachments/sbom`.
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+    /// Required. The target the attachment is for, can be a Version, Package or
+    /// Repository. E.g.
+    /// `projects/p1/locations/us-central1/repositories/repo1/packages/p1/versions/v1`.
+    #[prost(string, tag = "2")]
+    pub target: ::prost::alloc::string::String,
+    /// Type of attachment.
+    /// E.g. `application/vnd.spdx+json`
+    #[prost(string, tag = "3")]
+    pub r#type: ::prost::alloc::string::String,
+    /// The namespace this attachment belongs to.
+    /// E.g. If an attachment is created by artifact analysis, namespace is set
+    /// to `artifactanalysis.googleapis.com`.
+    #[prost(string, tag = "4")]
+    pub attachment_namespace: ::prost::alloc::string::String,
+    /// Optional. User annotations. These attributes can only be set and used by
+    /// the user, and not by Artifact Registry. See
+    /// <https://google.aip.dev/128#annotations> for more details such as format and
+    /// size limitations.
+    #[prost(map = "string, string", tag = "5")]
+    pub annotations: ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
+    /// Output only. The time when the attachment was created.
+    #[prost(message, optional, tag = "6")]
+    pub create_time: ::core::option::Option<::prost_types::Timestamp>,
+    /// Output only. The time when the attachment was last updated.
+    #[prost(message, optional, tag = "7")]
+    pub update_time: ::core::option::Option<::prost_types::Timestamp>,
+    /// Required. The files that belong to this attachment.
+    /// If the file ID part contains slashes, they are escaped. E.g.
+    /// `projects/p1/locations/us-central1/repositories/repo1/files/sha:<sha-of-file>`.
+    #[prost(string, repeated, tag = "8")]
+    pub files: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// Output only. The name of the OCI version that this attachment created. Only
+    /// populated for Docker attachments. E.g.
+    /// `projects/p1/locations/us-central1/repositories/repo1/packages/p1/versions/v1`.
+    #[prost(string, tag = "9")]
+    pub oci_version_name: ::prost::alloc::string::String,
+}
+/// The request to list attachments.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListAttachmentsRequest {
+    /// Required. The name of the parent resource whose attachments will be listed.
+    #[prost(string, tag = "1")]
+    pub parent: ::prost::alloc::string::String,
+    /// Optional. An expression for filtering the results of the request. Filter
+    /// rules are case insensitive. The fields eligible for filtering are:
+    ///
+    ///    * `target`
+    ///    * `type`
+    ///    * `attachment_namespace`
+    #[prost(string, tag = "2")]
+    pub filter: ::prost::alloc::string::String,
+    /// The maximum number of attachments to return. Maximum page size is 1,000.
+    #[prost(int32, tag = "3")]
+    pub page_size: i32,
+    /// The next_page_token value returned from a previous list request, if any.
+    #[prost(string, tag = "4")]
+    pub page_token: ::prost::alloc::string::String,
+}
+/// The response from listing attachments.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListAttachmentsResponse {
+    /// The attachments returned.
+    #[prost(message, repeated, tag = "1")]
+    pub attachments: ::prost::alloc::vec::Vec<Attachment>,
+    /// The token to retrieve the next page of attachments, or empty if there are
+    /// no more attachments to return.
+    #[prost(string, tag = "2")]
+    pub next_page_token: ::prost::alloc::string::String,
+}
+/// The request to retrieve an attachment.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetAttachmentRequest {
+    /// Required. The name of the attachment to retrieve.
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+}
+/// The request to create a new attachment.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateAttachmentRequest {
+    /// Required. The name of the parent resource where the attachment will be
+    /// created.
+    #[prost(string, tag = "1")]
+    pub parent: ::prost::alloc::string::String,
+    /// Required. The attachment id to use for this attachment.
+    #[prost(string, tag = "2")]
+    pub attachment_id: ::prost::alloc::string::String,
+    /// Required. The attachment to be created.
+    #[prost(message, optional, tag = "3")]
+    pub attachment: ::core::option::Option<Attachment>,
+}
+/// The request to delete an attachment.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DeleteAttachmentRequest {
+    /// Required. The name of the attachment to delete.
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+}
+/// A rule defines the deny or allow action of the operation it applies to and
+/// the conditions required for the rule to apply. You can set one rule for an
+/// entire repository and one rule for each package within.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Rule {
+    /// The name of the rule, for example:
+    /// `projects/p1/locations/us-central1/repositories/repo1/rules/rule1`.
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+    /// The action this rule takes.
+    #[prost(enumeration = "rule::Action", tag = "2")]
+    pub action: i32,
+    #[prost(enumeration = "rule::Operation", tag = "3")]
+    pub operation: i32,
+    /// Optional. A CEL expression for conditions that must be met in order for the
+    /// rule to apply. If not provided, the rule matches all objects.
+    #[prost(message, optional, tag = "4")]
+    pub condition: ::core::option::Option<super::super::super::r#type::Expr>,
+    /// The package ID the rule applies to.
+    /// If empty, this rule applies to all packages inside the repository.
+    #[prost(string, tag = "5")]
+    pub package_id: ::prost::alloc::string::String,
+}
+/// Nested message and enum types in `Rule`.
+pub mod rule {
+    /// Defines the action of the rule.
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[repr(i32)]
+    pub enum Action {
+        /// Action not specified.
+        Unspecified = 0,
+        /// Allow the operation.
+        Allow = 1,
+        /// Deny the operation.
+        Deny = 2,
+    }
+    impl Action {
+        /// String value of the enum field names used in the ProtoBuf definition.
+        ///
+        /// The values are not transformed in any way and thus are considered stable
+        /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+        pub fn as_str_name(&self) -> &'static str {
+            match self {
+                Self::Unspecified => "ACTION_UNSPECIFIED",
+                Self::Allow => "ALLOW",
+                Self::Deny => "DENY",
+            }
+        }
+        /// Creates an enum from field names used in the ProtoBuf definition.
+        pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+            match value {
+                "ACTION_UNSPECIFIED" => Some(Self::Unspecified),
+                "ALLOW" => Some(Self::Allow),
+                "DENY" => Some(Self::Deny),
+                _ => None,
+            }
+        }
+    }
+    /// The operation the rule applies to.
+    #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+    #[repr(i32)]
+    pub enum Operation {
+        /// Operation not specified.
+        Unspecified = 0,
+        /// Download operation.
+        Download = 1,
+    }
+    impl Operation {
+        /// String value of the enum field names used in the ProtoBuf definition.
+        ///
+        /// The values are not transformed in any way and thus are considered stable
+        /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+        pub fn as_str_name(&self) -> &'static str {
+            match self {
+                Self::Unspecified => "OPERATION_UNSPECIFIED",
+                Self::Download => "DOWNLOAD",
+            }
+        }
+        /// Creates an enum from field names used in the ProtoBuf definition.
+        pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+            match value {
+                "OPERATION_UNSPECIFIED" => Some(Self::Unspecified),
+                "DOWNLOAD" => Some(Self::Download),
+                _ => None,
+            }
+        }
+    }
+}
+/// The request to list rules.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListRulesRequest {
+    /// Required. The name of the parent repository whose rules will be listed.
+    /// For example:
+    /// `projects/p1/locations/us-central1/repositories/repo1`.
+    #[prost(string, tag = "1")]
+    pub parent: ::prost::alloc::string::String,
+    /// The maximum number of rules to return. Maximum page size is 1,000.
+    #[prost(int32, tag = "2")]
+    pub page_size: i32,
+    /// The next_page_token value returned from a previous list request, if any.
+    #[prost(string, tag = "3")]
+    pub page_token: ::prost::alloc::string::String,
+}
+/// The response from listing rules.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ListRulesResponse {
+    /// The rules returned.
+    #[prost(message, repeated, tag = "1")]
+    pub rules: ::prost::alloc::vec::Vec<Rule>,
+    /// The token to retrieve the next page of rules, or empty if there are no
+    /// more rules to return.
+    #[prost(string, tag = "2")]
+    pub next_page_token: ::prost::alloc::string::String,
+}
+/// The request to retrieve a rule.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetRuleRequest {
+    /// Required. The name of the rule to retrieve.
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+}
+/// The request to create a new rule.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct CreateRuleRequest {
+    /// Required. The name of the parent resource where the rule will be created.
+    #[prost(string, tag = "1")]
+    pub parent: ::prost::alloc::string::String,
+    /// The rule id to use for this repository.
+    #[prost(string, tag = "2")]
+    pub rule_id: ::prost::alloc::string::String,
+    /// The rule to be created.
+    #[prost(message, optional, tag = "3")]
+    pub rule: ::core::option::Option<Rule>,
+}
+/// The request to update a rule.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UpdateRuleRequest {
+    /// The rule that replaces the resource on the server.
+    #[prost(message, optional, tag = "1")]
+    pub rule: ::core::option::Option<Rule>,
+    /// The update mask applies to the resource. For the `FieldMask` definition,
+    /// see
+    /// <https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask>
+    #[prost(message, optional, tag = "2")]
+    pub update_mask: ::core::option::Option<::prost_types::FieldMask>,
+}
+/// The request to delete a rule.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct DeleteRuleRequest {
+    /// Required. The name of the rule to delete.
+    #[prost(string, tag = "1")]
+    pub name: ::prost::alloc::string::String,
+}
 /// The Artifact Registry settings that apply to a Project.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ProjectSettings {
     /// The name of the project's settings.
@@ -1733,6 +2257,10 @@ pub struct ProjectSettings {
     /// The redirection state of the legacy repositories in this project.
     #[prost(enumeration = "project_settings::RedirectionState", tag = "2")]
     pub legacy_redirection_state: i32,
+    /// The percentage of pull traffic to redirect from GCR to AR when using
+    /// partial redirection.
+    #[prost(int32, tag = "3")]
+    pub pull_percent: i32,
 }
 /// Nested message and enum types in `ProjectSettings`.
 pub mod project_settings {
@@ -1748,6 +2276,10 @@ pub mod project_settings {
         RedirectionFromGcrIoEnabled = 2,
         /// Redirection is enabled, and has been finalized so cannot be reverted.
         RedirectionFromGcrIoFinalized = 3,
+        /// Redirection is enabled and missing images are copied from GCR
+        RedirectionFromGcrIoEnabledAndCopying = 5,
+        /// Redirection is partially enabled and missing images are copied from GCR
+        RedirectionFromGcrIoPartialAndCopying = 6,
     }
     impl RedirectionState {
         /// String value of the enum field names used in the ProtoBuf definition.
@@ -1756,10 +2288,12 @@ pub mod project_settings {
         /// (if the ProtoBuf definition does not change) and safe for programmatic use.
         pub fn as_str_name(&self) -> &'static str {
             match self {
-                RedirectionState::Unspecified => "REDIRECTION_STATE_UNSPECIFIED",
-                RedirectionState::RedirectionFromGcrIoDisabled => "REDIRECTION_FROM_GCR_IO_DISABLED",
-                RedirectionState::RedirectionFromGcrIoEnabled => "REDIRECTION_FROM_GCR_IO_ENABLED",
-                RedirectionState::RedirectionFromGcrIoFinalized => "REDIRECTION_FROM_GCR_IO_FINALIZED",
+                Self::Unspecified => "REDIRECTION_STATE_UNSPECIFIED",
+                Self::RedirectionFromGcrIoDisabled => "REDIRECTION_FROM_GCR_IO_DISABLED",
+                Self::RedirectionFromGcrIoEnabled => "REDIRECTION_FROM_GCR_IO_ENABLED",
+                Self::RedirectionFromGcrIoFinalized => "REDIRECTION_FROM_GCR_IO_FINALIZED",
+                Self::RedirectionFromGcrIoEnabledAndCopying => "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING",
+                Self::RedirectionFromGcrIoPartialAndCopying => "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING",
             }
         }
         /// Creates an enum from field names used in the ProtoBuf definition.
@@ -1769,13 +2303,14 @@ pub mod project_settings {
                 "REDIRECTION_FROM_GCR_IO_DISABLED" => Some(Self::RedirectionFromGcrIoDisabled),
                 "REDIRECTION_FROM_GCR_IO_ENABLED" => Some(Self::RedirectionFromGcrIoEnabled),
                 "REDIRECTION_FROM_GCR_IO_FINALIZED" => Some(Self::RedirectionFromGcrIoFinalized),
+                "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING" => Some(Self::RedirectionFromGcrIoEnabledAndCopying),
+                "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING" => Some(Self::RedirectionFromGcrIoPartialAndCopying),
                 _ => None,
             }
         }
     }
 }
 /// Gets the redirection status for a project.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetProjectSettingsRequest {
     /// Required. The name of the projectSettings resource.
@@ -1783,7 +2318,6 @@ pub struct GetProjectSettingsRequest {
     pub name: ::prost::alloc::string::String,
 }
 /// Sets the settings of the project.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateProjectSettingsRequest {
     /// The project settings.
@@ -1795,7 +2329,6 @@ pub struct UpdateProjectSettingsRequest {
 }
 /// Tags point to a version and represent an alternative name that can be used
 /// to access the version.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Tag {
     /// The name of the tag, for example:
@@ -1806,14 +2339,13 @@ pub struct Tag {
     #[prost(string, tag = "1")]
     pub name: ::prost::alloc::string::String,
     /// The name of the version the tag refers to, for example:
-    /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+    /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811`
     /// If the package or version ID parts contain slashes, the slashes are
     /// escaped.
     #[prost(string, tag = "2")]
     pub version: ::prost::alloc::string::String,
 }
 /// The request to list tags.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListTagsRequest {
     /// The name of the parent package whose tags will be listed.
@@ -1824,15 +2356,33 @@ pub struct ListTagsRequest {
     /// An expression for filtering the results of the request. Filter rules are
     /// case insensitive. The fields eligible for filtering are:
     ///
+    ///    * `name`
     ///    * `version`
     ///
-    ///   An example of using a filter:
+    ///   Examples of using a filter:
     ///
-    ///    * `version="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
-    ///    --> Tags that are applied to the version `1.0` in package `pkg1`.
+    ///   To filter the results of your request to tags with the name `my-tag` in
+    ///   package `my-package` in repository `my-repo` in project "`y-project` in
+    ///   the us-central region, append the following filter expression to your
+    ///   request:
+    ///
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my-tag"`
+    ///
+    ///   You can also use wildcards to match any number of characters before or
+    ///   after the value:
+    ///
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my*"`
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag"`
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag*"`
+    ///
+    ///   To filter the results of your request to tags applied to the version
+    ///   `1.0` in package `my-package`, append the following filter expression to
+    ///   your request:
+    ///
+    ///    * `version="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"`
     #[prost(string, tag = "4")]
     pub filter: ::prost::alloc::string::String,
-    /// The maximum number of tags to return. Maximum page size is 10,000.
+    /// The maximum number of tags to return. Maximum page size is 1,000.
     #[prost(int32, tag = "2")]
     pub page_size: i32,
     /// The next_page_token value returned from a previous list request, if any.
@@ -1840,7 +2390,6 @@ pub struct ListTagsRequest {
     pub page_token: ::prost::alloc::string::String,
 }
 /// The response from listing tags.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListTagsResponse {
     /// The tags returned.
@@ -1852,7 +2401,6 @@ pub struct ListTagsResponse {
     pub next_page_token: ::prost::alloc::string::String,
 }
 /// The request to retrieve a tag.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetTagRequest {
     /// The name of the tag to retrieve.
@@ -1860,7 +2408,6 @@ pub struct GetTagRequest {
     pub name: ::prost::alloc::string::String,
 }
 /// The request to create a new tag.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct CreateTagRequest {
     /// The name of the parent resource where the tag will be created.
@@ -1874,7 +2421,6 @@ pub struct CreateTagRequest {
     pub tag: ::core::option::Option<Tag>,
 }
 /// The request to create or update a tag.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateTagRequest {
     /// The tag that replaces the resource on the server.
@@ -1887,7 +2433,6 @@ pub struct UpdateTagRequest {
     pub update_mask: ::core::option::Option<::prost_types::FieldMask>,
 }
 /// The request to delete a tag.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeleteTagRequest {
     /// The name of the tag to delete.
@@ -1897,11 +2442,10 @@ pub struct DeleteTagRequest {
 /// The body of a version resource. A version resource represents a
 /// collection of components, such as files and other data. This may correspond
 /// to a version in many package management schemes.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Version {
     /// The name of the version, for example:
-    /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1".
+    /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`.
     /// If the package or version ID parts contain slashes, the slashes are
     /// escaped.
     #[prost(string, tag = "1")]
@@ -1926,9 +2470,11 @@ pub struct Version {
     /// [MavenArtifact][google.devtools.artifactregistry.v1.MavenArtifact]
     #[prost(message, optional, tag = "8")]
     pub metadata: ::core::option::Option<::prost_types::Struct>,
+    /// Optional. Client specified annotations.
+    #[prost(map = "string, string", tag = "9")]
+    pub annotations: ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
 }
 /// The request to list versions.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListVersionsRequest {
     /// The name of the parent resource whose versions will be listed.
@@ -1946,9 +2492,55 @@ pub struct ListVersionsRequest {
     /// Optional. The field to order the results by.
     #[prost(string, tag = "5")]
     pub order_by: ::prost::alloc::string::String,
+    /// Optional. An expression for filtering the results of the request. Filter
+    /// rules are case insensitive. The fields eligible for filtering are:
+    ///
+    ///    * `name`
+    ///    * `annotations`
+    ///
+    ///   Examples of using a filter:
+    ///
+    ///   To filter the results of your request to versions with the name
+    ///   `my-version` in project `my-project` in the `us-central` region, in
+    ///   repository `my-repo`, append the following filter expression to your
+    ///   request:
+    ///
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/my-version"`
+    ///
+    ///   You can also use wildcards to match any number of characters before or
+    ///   after the value:
+    ///
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/*version"`
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/my*"`
+    ///    * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/*version*"`
+    ///
+    ///   To filter the results of your request to versions with the annotation
+    ///   key-value pair \[`external_link`: `external_link_value`\], append the
+    ///   following filter expression to your request:
+    ///
+    ///    * `"annotations.external_link:external_link_value"`
+    ///
+    ///   To filter just for a specific annotation key `external_link`, append the
+    ///   following filter expression to your request:
+    ///
+    ///    * `"annotations.external_link"`
+    ///
+    ///   If the annotation key or value contains special characters, you can escape
+    ///   them by surrounding the value with backticks. For example, to filter the
+    ///   results of your request to versions with the annotation key-value pair
+    ///   \[`external.link`:`<https://example.com/my-version`\],> append the following
+    ///   filter expression to your request:
+    ///
+    ///    * `` "annotations.`external.link`:`<https://example.com/my-version`"> ``
+    ///
+    ///   You can also filter with annotations with a wildcard to
+    ///   match any number of characters before or after the value:
+    ///
+    ///    * `` "annotations.*_link:`*example.com*`" ``
+    #[prost(string, tag = "6")]
+    pub filter: ::prost::alloc::string::String,
 }
 /// The response from listing versions.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ListVersionsResponse {
     /// The versions returned.
@@ -1960,7 +2552,6 @@ pub struct ListVersionsResponse {
     pub next_page_token: ::prost::alloc::string::String,
 }
 /// The request to retrieve a version.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetVersionRequest {
     /// The name of the version to retrieve.
@@ -1971,7 +2562,6 @@ pub struct GetVersionRequest {
     pub view: i32,
 }
 /// The request to delete a version.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DeleteVersionRequest {
     /// The name of the version to delete.
@@ -1983,14 +2573,14 @@ pub struct DeleteVersionRequest {
     pub force: bool,
 }
 /// The request to delete multiple versions across a repository.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BatchDeleteVersionsRequest {
     /// The name of the repository holding all requested versions.
     #[prost(string, tag = "1")]
     pub parent: ::prost::alloc::string::String,
     /// Required. The names of the versions to delete.
-    /// A maximum of 10000 versions can be deleted in a batch.
+    /// The maximum number of versions deleted per batch is determined by the
+    /// service and is dependent on the available resources in the region.
     #[prost(string, repeated, tag = "2")]
     pub names: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
     /// If true, the request is performed without deleting data, following AIP-163.
@@ -1998,12 +2588,23 @@ pub struct BatchDeleteVersionsRequest {
     pub validate_only: bool,
 }
 /// The metadata of an LRO from deleting multiple versions.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct BatchDeleteVersionsMetadata {
     /// The versions the operation failed to delete.
     #[prost(string, repeated, tag = "2")]
     pub failed_versions: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+/// The request to update a version.
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UpdateVersionRequest {
+    /// Required. The Version that replaces the resource on the server.
+    #[prost(message, optional, tag = "1")]
+    pub version: ::core::option::Option<Version>,
+    /// The update mask applies to the resource. For the `FieldMask` definition,
+    /// see
+    /// <https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask>
+    #[prost(message, optional, tag = "2")]
+    pub update_mask: ::core::option::Option<::prost_types::FieldMask>,
 }
 /// The view, which determines what version information is returned in a
 /// response.
@@ -2025,9 +2626,9 @@ impl VersionView {
     /// (if the ProtoBuf definition does not change) and safe for programmatic use.
     pub fn as_str_name(&self) -> &'static str {
         match self {
-            VersionView::Unspecified => "VERSION_VIEW_UNSPECIFIED",
-            VersionView::Basic => "BASIC",
-            VersionView::Full => "FULL",
+            Self::Unspecified => "VERSION_VIEW_UNSPECIFIED",
+            Self::Basic => "BASIC",
+            Self::Full => "FULL",
         }
     }
     /// Creates an enum from field names used in the ProtoBuf definition.
@@ -2041,12 +2642,17 @@ impl VersionView {
     }
 }
 /// Metadata type for longrunning-operations, currently empty.
-#[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, Copy, PartialEq, ::prost::Message)]
 pub struct OperationMetadata {}
 /// Generated client implementations.
 pub mod artifact_registry_client {
-    #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
+    #![allow(
+        unused_variables,
+        dead_code,
+        missing_docs,
+        clippy::wildcard_imports,
+        clippy::let_unit_value
+    )]
     use tonic::codegen::http::Uri;
     use tonic::codegen::*;
     /// The Artifact Registry API service.
@@ -2079,10 +2685,10 @@ pub mod artifact_registry_client {
     }
     impl<T> ArtifactRegistryClient<T>
     where
-        T: tonic::client::GrpcService<tonic::body::BoxBody>,
+        T: tonic::client::GrpcService<tonic::body::Body>,
         T::Error: Into<StdError>,
-        T::ResponseBody: Body<Data = Bytes> + Send + 'static,
-        <T::ResponseBody as Body>::Error: Into<StdError> + Send,
+        T::ResponseBody: Body<Data = Bytes> + std::marker::Send + 'static,
+        <T::ResponseBody as Body>::Error: Into<StdError> + std::marker::Send,
     {
         pub fn new(inner: T) -> Self {
             let inner = tonic::client::Grpc::new(inner);
@@ -2097,10 +2703,11 @@ pub mod artifact_registry_client {
             F: tonic::service::Interceptor,
             T::ResponseBody: Default,
             T: tonic::codegen::Service<
-                http::Request<tonic::body::BoxBody>,
-                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::BoxBody>>::ResponseBody>,
+                http::Request<tonic::body::Body>,
+                Response = http::Response<<T as tonic::client::GrpcService<tonic::body::Body>>::ResponseBody>,
             >,
-            <T as tonic::codegen::Service<http::Request<tonic::body::BoxBody>>>::Error: Into<StdError> + Send + Sync,
+            <T as tonic::codegen::Service<http::Request<tonic::body::Body>>>::Error:
+                Into<StdError> + std::marker::Send + std::marker::Sync,
         {
             ArtifactRegistryClient::new(InterceptedService::new(inner, interceptor))
         }
@@ -2140,9 +2747,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ListDockerImagesRequest>,
         ) -> std::result::Result<tonic::Response<super::ListDockerImagesResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/ListDockerImages",
@@ -2159,9 +2767,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetDockerImageRequest>,
         ) -> std::result::Result<tonic::Response<super::DockerImage>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetDockerImage",
@@ -2178,9 +2787,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ListMavenArtifactsRequest>,
         ) -> std::result::Result<tonic::Response<super::ListMavenArtifactsResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/ListMavenArtifacts",
@@ -2197,9 +2807,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetMavenArtifactRequest>,
         ) -> std::result::Result<tonic::Response<super::MavenArtifact>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetMavenArtifact",
@@ -2216,9 +2827,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ListNpmPackagesRequest>,
         ) -> std::result::Result<tonic::Response<super::ListNpmPackagesResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/ListNpmPackages",
@@ -2235,9 +2847,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetNpmPackageRequest>,
         ) -> std::result::Result<tonic::Response<super::NpmPackage>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetNpmPackage",
@@ -2254,9 +2867,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ListPythonPackagesRequest>,
         ) -> std::result::Result<tonic::Response<super::ListPythonPackagesResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/ListPythonPackages",
@@ -2273,9 +2887,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetPythonPackageRequest>,
         ) -> std::result::Result<tonic::Response<super::PythonPackage>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetPythonPackage",
@@ -2296,9 +2911,10 @@ pub mod artifact_registry_client {
             request: impl tonic::IntoRequest<super::ImportAptArtifactsRequest>,
         ) -> std::result::Result<tonic::Response<super::super::super::super::longrunning::Operation>, tonic::Status>
         {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/ImportAptArtifacts",
@@ -2319,9 +2935,10 @@ pub mod artifact_registry_client {
             request: impl tonic::IntoRequest<super::ImportYumArtifactsRequest>,
         ) -> std::result::Result<tonic::Response<super::super::super::super::longrunning::Operation>, tonic::Status>
         {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/ImportYumArtifacts",
@@ -2338,9 +2955,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ListRepositoriesRequest>,
         ) -> std::result::Result<tonic::Response<super::ListRepositoriesResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/ListRepositories",
@@ -2357,9 +2975,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetRepositoryRequest>,
         ) -> std::result::Result<tonic::Response<super::Repository>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetRepository",
@@ -2378,9 +2997,10 @@ pub mod artifact_registry_client {
             request: impl tonic::IntoRequest<super::CreateRepositoryRequest>,
         ) -> std::result::Result<tonic::Response<super::super::super::super::longrunning::Operation>, tonic::Status>
         {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/CreateRepository",
@@ -2397,9 +3017,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateRepositoryRequest>,
         ) -> std::result::Result<tonic::Response<super::Repository>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/UpdateRepository",
@@ -2419,9 +3040,10 @@ pub mod artifact_registry_client {
             request: impl tonic::IntoRequest<super::DeleteRepositoryRequest>,
         ) -> std::result::Result<tonic::Response<super::super::super::super::longrunning::Operation>, tonic::Status>
         {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/DeleteRepository",
@@ -2438,9 +3060,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ListPackagesRequest>,
         ) -> std::result::Result<tonic::Response<super::ListPackagesResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/ListPackages",
@@ -2457,9 +3080,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetPackageRequest>,
         ) -> std::result::Result<tonic::Response<super::Package>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetPackage",
@@ -2478,9 +3102,10 @@ pub mod artifact_registry_client {
             request: impl tonic::IntoRequest<super::DeletePackageRequest>,
         ) -> std::result::Result<tonic::Response<super::super::super::super::longrunning::Operation>, tonic::Status>
         {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/DeletePackage",
@@ -2497,9 +3122,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::ListVersionsRequest>,
         ) -> std::result::Result<tonic::Response<super::ListVersionsResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/ListVersions",
@@ -2516,9 +3142,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetVersionRequest>,
         ) -> std::result::Result<tonic::Response<super::Version>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetVersion",
@@ -2537,9 +3164,10 @@ pub mod artifact_registry_client {
             request: impl tonic::IntoRequest<super::DeleteVersionRequest>,
         ) -> std::result::Result<tonic::Response<super::super::super::super::longrunning::Operation>, tonic::Status>
         {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/DeleteVersion",
@@ -2558,9 +3186,10 @@ pub mod artifact_registry_client {
             request: impl tonic::IntoRequest<super::BatchDeleteVersionsRequest>,
         ) -> std::result::Result<tonic::Response<super::super::super::super::longrunning::Operation>, tonic::Status>
         {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/BatchDeleteVersions",
@@ -2572,14 +3201,35 @@ pub mod artifact_registry_client {
             ));
             self.inner.unary(req, path, codec).await
         }
+        /// Updates a version.
+        pub async fn update_version(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdateVersionRequest>,
+        ) -> std::result::Result<tonic::Response<super::Version>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/UpdateVersion",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "UpdateVersion",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
         /// Lists files.
         pub async fn list_files(
             &mut self,
             request: impl tonic::IntoRequest<super::ListFilesRequest>,
         ) -> std::result::Result<tonic::Response<super::ListFilesResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/google.devtools.artifactregistry.v1.ArtifactRegistry/ListFiles");
@@ -2595,9 +3245,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetFileRequest>,
         ) -> std::result::Result<tonic::Response<super::File>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/google.devtools.artifactregistry.v1.ArtifactRegistry/GetFile");
@@ -2608,14 +3259,58 @@ pub mod artifact_registry_client {
             ));
             self.inner.unary(req, path, codec).await
         }
+        /// Deletes a file and all of its content. It is only allowed on generic
+        /// repositories. The returned operation will complete once the file has been
+        /// deleted.
+        pub async fn delete_file(
+            &mut self,
+            request: impl tonic::IntoRequest<super::DeleteFileRequest>,
+        ) -> std::result::Result<tonic::Response<super::super::super::super::longrunning::Operation>, tonic::Status>
+        {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/DeleteFile",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "DeleteFile",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
+        /// Updates a file.
+        pub async fn update_file(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdateFileRequest>,
+        ) -> std::result::Result<tonic::Response<super::File>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/UpdateFile",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "UpdateFile",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
         /// Lists tags.
         pub async fn list_tags(
             &mut self,
             request: impl tonic::IntoRequest<super::ListTagsRequest>,
         ) -> std::result::Result<tonic::Response<super::ListTagsResponse>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/google.devtools.artifactregistry.v1.ArtifactRegistry/ListTags");
@@ -2631,9 +3326,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetTagRequest>,
         ) -> std::result::Result<tonic::Response<super::Tag>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/google.devtools.artifactregistry.v1.ArtifactRegistry/GetTag");
@@ -2649,9 +3345,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::CreateTagRequest>,
         ) -> std::result::Result<tonic::Response<super::Tag>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/google.devtools.artifactregistry.v1.ArtifactRegistry/CreateTag");
@@ -2667,9 +3364,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateTagRequest>,
         ) -> std::result::Result<tonic::Response<super::Tag>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/google.devtools.artifactregistry.v1.ArtifactRegistry/UpdateTag");
@@ -2685,9 +3383,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::DeleteTagRequest>,
         ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path =
                 http::uri::PathAndQuery::from_static("/google.devtools.artifactregistry.v1.ArtifactRegistry/DeleteTag");
@@ -2698,14 +3397,113 @@ pub mod artifact_registry_client {
             ));
             self.inner.unary(req, path, codec).await
         }
+        /// Creates a rule.
+        pub async fn create_rule(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateRuleRequest>,
+        ) -> std::result::Result<tonic::Response<super::Rule>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/CreateRule",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "CreateRule",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
+        /// Lists rules.
+        pub async fn list_rules(
+            &mut self,
+            request: impl tonic::IntoRequest<super::ListRulesRequest>,
+        ) -> std::result::Result<tonic::Response<super::ListRulesResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path =
+                http::uri::PathAndQuery::from_static("/google.devtools.artifactregistry.v1.ArtifactRegistry/ListRules");
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "ListRules",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
+        /// Gets a rule.
+        pub async fn get_rule(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetRuleRequest>,
+        ) -> std::result::Result<tonic::Response<super::Rule>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path =
+                http::uri::PathAndQuery::from_static("/google.devtools.artifactregistry.v1.ArtifactRegistry/GetRule");
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "GetRule",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
+        /// Updates a rule.
+        pub async fn update_rule(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdateRuleRequest>,
+        ) -> std::result::Result<tonic::Response<super::Rule>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/UpdateRule",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "UpdateRule",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
+        /// Deletes a rule.
+        pub async fn delete_rule(
+            &mut self,
+            request: impl tonic::IntoRequest<super::DeleteRuleRequest>,
+        ) -> std::result::Result<tonic::Response<()>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/DeleteRule",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "DeleteRule",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
         /// Updates the IAM policy for a given resource.
         pub async fn set_iam_policy(
             &mut self,
             request: impl tonic::IntoRequest<super::super::super::super::iam::v1::SetIamPolicyRequest>,
         ) -> std::result::Result<tonic::Response<super::super::super::super::iam::v1::Policy>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/SetIamPolicy",
@@ -2722,9 +3520,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::super::super::super::iam::v1::GetIamPolicyRequest>,
         ) -> std::result::Result<tonic::Response<super::super::super::super::iam::v1::Policy>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetIamPolicy",
@@ -2744,9 +3543,10 @@ pub mod artifact_registry_client {
             tonic::Response<super::super::super::super::iam::v1::TestIamPermissionsResponse>,
             tonic::Status,
         > {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/TestIamPermissions",
@@ -2763,9 +3563,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetProjectSettingsRequest>,
         ) -> std::result::Result<tonic::Response<super::ProjectSettings>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetProjectSettings",
@@ -2782,9 +3583,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateProjectSettingsRequest>,
         ) -> std::result::Result<tonic::Response<super::ProjectSettings>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/UpdateProjectSettings",
@@ -2801,9 +3603,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::GetVpcscConfigRequest>,
         ) -> std::result::Result<tonic::Response<super::VpcscConfig>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetVPCSCConfig",
@@ -2820,9 +3623,10 @@ pub mod artifact_registry_client {
             &mut self,
             request: impl tonic::IntoRequest<super::UpdateVpcscConfigRequest>,
         ) -> std::result::Result<tonic::Response<super::VpcscConfig>, tonic::Status> {
-            self.inner.ready().await.map_err(|e| {
-                tonic::Status::new(tonic::Code::Unknown, format!("Service was not ready: {}", e.into()))
-            })?;
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
             let codec = tonic::codec::ProstCodec::default();
             let path = http::uri::PathAndQuery::from_static(
                 "/google.devtools.artifactregistry.v1.ArtifactRegistry/UpdateVPCSCConfig",
@@ -2831,6 +3635,111 @@ pub mod artifact_registry_client {
             req.extensions_mut().insert(GrpcMethod::new(
                 "google.devtools.artifactregistry.v1.ArtifactRegistry",
                 "UpdateVPCSCConfig",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
+        /// Updates a package.
+        pub async fn update_package(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdatePackageRequest>,
+        ) -> std::result::Result<tonic::Response<super::Package>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/UpdatePackage",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "UpdatePackage",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
+        /// Lists attachments.
+        pub async fn list_attachments(
+            &mut self,
+            request: impl tonic::IntoRequest<super::ListAttachmentsRequest>,
+        ) -> std::result::Result<tonic::Response<super::ListAttachmentsResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/ListAttachments",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "ListAttachments",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
+        /// Gets an attachment.
+        pub async fn get_attachment(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetAttachmentRequest>,
+        ) -> std::result::Result<tonic::Response<super::Attachment>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/GetAttachment",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "GetAttachment",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
+        /// Creates an attachment. The returned Operation will finish once the
+        /// attachment has been created. Its response will be the created attachment.
+        pub async fn create_attachment(
+            &mut self,
+            request: impl tonic::IntoRequest<super::CreateAttachmentRequest>,
+        ) -> std::result::Result<tonic::Response<super::super::super::super::longrunning::Operation>, tonic::Status>
+        {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/CreateAttachment",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "CreateAttachment",
+            ));
+            self.inner.unary(req, path, codec).await
+        }
+        /// Deletes an attachment. The returned Operation will
+        /// finish once the attachments has been deleted. It will not have any
+        /// Operation metadata and will return a `google.protobuf.Empty` response.
+        pub async fn delete_attachment(
+            &mut self,
+            request: impl tonic::IntoRequest<super::DeleteAttachmentRequest>,
+        ) -> std::result::Result<tonic::Response<super::super::super::super::longrunning::Operation>, tonic::Status>
+        {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| tonic::Status::unknown(format!("Service was not ready: {}", e.into())))?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/google.devtools.artifactregistry.v1.ArtifactRegistry/DeleteAttachment",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut().insert(GrpcMethod::new(
+                "google.devtools.artifactregistry.v1.ArtifactRegistry",
+                "DeleteAttachment",
             ));
             self.inner.unary(req, path, codec).await
         }
